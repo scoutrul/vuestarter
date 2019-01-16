@@ -29,7 +29,6 @@ module.exports = {
         }
     },
     plugins: [
-        // убедитесь что подключили плагин!
         new VueLoaderPlugin()
     ]
 }

@@ -6,11 +6,7 @@
         <span class="font-weight-light">MATERIAL DESIGN</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
+      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
         <span class="mr-2">Latest Release</span>
       </v-btn>
     </v-toolbar>
@@ -22,17 +18,40 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Axios from 'axios';
+import HelloWorld from "./components/HelloWorld";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld
   },
-  data () {
+  data() {
     return {
       //
+    };
+  },
+  mutations: {
+    SET_NAME: (state, name) => {
+      state.name = name;
     }
-  }
-}
+  },
+
+  actions: {
+    SET_NAME: async (context, name) => {
+      let { data } = await Axios.post("http://myapiendpoint.com/api/name", {
+        name: name
+      });
+
+      if (data.status == 200) {
+        context.commit("SET_NAME", name);
+      }
+    }
+  },
+
+  // beforeRouteEnter(to, from, next) {
+  // },
+  // beforeRouteUpdate(to, from, next) {
+  // }
+};
 </script>
