@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import Axios from "axios";
 
 Vue.use(Vuex);
 
@@ -26,13 +25,13 @@ export const store = new Vuex.Store({
 
   actions: {
     GET_TESTS: async (context, payload) => {
-      let { data } = await Axios.get("http://yourwebsite.com/api/todo");
+      let { data } = await import(/* webpackChunkName: "Axios" */ 'axios').then(({ default: Axios }) => Axios.get("http://yourwebsite.com/api/todo"));
       context.commit("SET_TESTS", data);
       console.log(payload);
     },
 
     SAVE_TODO: async (context, payload) => {
-      let { data } = await Axios.post("http://yourwebsite.com/api/todo");
+      let { data } = await import(/* webpackChunkName: "Axios" */ 'axios').then(({ default: Axios }) => Axios.post("http://yourwebsite.com/api/todo"));
       context.commit("ADD_TEST", payload);
       console.log(data);
     }
