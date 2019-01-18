@@ -13,10 +13,6 @@ module.exports = {
         'quotes': ['warn', 'single'],
         'semi': ['error', 'always'],
         'no-unused-vars': 'warn',
-        'vue/script-indent': ['warn', 4, {
-            'baseIndent': 1,
-            'switchCase': 1
-        }]
     },
     parserOptions: {
         parser: 'babel-eslint'

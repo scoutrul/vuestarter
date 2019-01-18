@@ -1,5 +1,9 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
 
 Vue.use(Vuex);
 
@@ -8,40 +12,19 @@ export const store = new Vuex.Store({
     tests: null
   },
 
-  getters: {
-    TESTS: state => {
-      return state.tests;
-    }
-  },
+  getters,
+  mutations,
+  actions,
 
-  mutations: {
-    SET_TESTS: (state, payload) => {
-      state.tests = payload;
-    },
-    ADD_TEST: (state, payload) => {
-      state.tests.push(payload);
-    }
-  },
-
-  actions: {
-    GET_TESTS: async (context, payload) => {
-      let { data } = await import(/* webpackChunkName: "Axios" */ 'axios').then(({ default: Axios }) => Axios.get("http://yourwebsite.com/api/todo"));
-      context.commit("SET_TESTS", data);
-      console.log(payload);
-    },
-
-    SAVE_TODO: async (context, payload) => {
-      let { data } = await import(/* webpackChunkName: "Axios" */ 'axios').then(({ default: Axios }) => Axios.post("http://yourwebsite.com/api/todo"));
-      context.commit("ADD_TEST", payload);
-      console.log(data);
-    }
-  },
-
-  mounted() {
-    this.$store.dispatch("GET_TESTS");
+  created() {
+    this.fetchTests();
   },
 
   computed: {
+    fetchTests() {
+      this.$store.dispatch('GET_TESTS');
+    },
+
     testsList() {
       return this.$store.getters.TESTS;
     }
