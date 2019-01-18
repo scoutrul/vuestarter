@@ -1,52 +1,72 @@
 <template>
-    <LayoutMain>
-        <LayoutContainer> <HelloWorld /> </LayoutContainer>
-    </LayoutMain>
+    <v-app>
+        <LayoutMain>
+            <LayoutHeader>
+                <LayoutContainer>
+                    LayoutHeader
+                </LayoutContainer>
+            </LayoutHeader>
+            <LayoutBody>
+                <LayoutContainer>
+                    LayoutContainer
+                </LayoutContainer>
+            </LayoutBody>
+            <LayoutFooter>
+                <LayoutContainer>
+                    LayoutFooter
+                </LayoutContainer>
+            </LayoutFooter>
+        </LayoutMain>
+    </v-app>
 </template>
 
 <script>
-import LayoutMain from './components/layout/Main.vue';
-import LayoutContainer from './components/layout/Container.vue';
-import HelloWorld from './components/pages/Home';
+    import LayoutMain from './components/layout/Main.vue';
+    import LayoutHeader from './components/layout/Header.vue';
+    import LayoutContainer from './components/layout/Container.vue';
+    import LayoutBody from './components/layout/Body.vue';
+    import LayoutFooter from './components/layout/Footer.vue';
 
-export default {
-    name: 'App',
-    components: {
-        LayoutMain,
-        LayoutContainer,
-        HelloWorld,
-    },
-    data() {
-        return {
-            //
-        };
-    },
-    mounted() {
-        console.log('this.$vuetify', this.$vuetify);
-        console.log('this.$router', this.$router);
-    },
-
-    mutations: {
-        SET_NAME: (state, name) => {
-            state.name = name;
+    export default {
+        name: 'App',
+        components: {
+            LayoutMain,
+            LayoutContainer,
+            LayoutHeader,
+            LayoutFooter,
+            LayoutBody,
         },
-    },
+        data() {
+            return {
+                //
+            };
+        },
+        mounted() {
+            console.log('this.$vuetify', this.$vuetify);
+            console.log('this.$router', this.$router);
+        },
 
-    // actions: {
-    //     SET_NAME: async (context, name) => {
-    //         let { data } = await Axios.post('http://myapiendpoint.com/api/name', {
-    //             name: name
-    //         });
+        mutations: {
+            SET_NAME: (state, name) => {
+                state.name = name;
+            },
+        },
 
-    //         if (data.status == 200) {
-    //             context.commit('SET_NAME', name);
-    //         }
-    //     }
-    // },
+        // actions: {
+        //     SET_NAME: async (context, name) => {
+        //         let { data } = await Axios.post('http://myapiendpoint.com/api/name', {
+        //             name: name
+        //         });
 
-    // beforeRouteEnter(to, from, next) {
-    // },
-    // beforeRouteUpdate(to, from, next) {
-    // }
-};
+        //         if (data.status == 200) {
+        //             context.commit('SET_NAME', name);
+        //         }
+        //     }
+        // },
+
+        // beforeRouteEnter(to, from, next) {
+        // },
+        // beforeRouteUpdate(to, from, next) {
+        // }
+    };
 </script>

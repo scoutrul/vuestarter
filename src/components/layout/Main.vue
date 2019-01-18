@@ -1,13 +1,12 @@
 <template>
-    <v-app>
-        <div class="main">
-            Main layout
-        </div>
-    </v-app>
+    <v-flex
+        xs12
+        fluid
+        grow
+        fill-height
+        class="main"
+    >
+        <slot />
+    </v-flex>
 </template>
 
-<script>
-    export default {
-        props: {},
-    };
-</script>

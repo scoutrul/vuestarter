@@ -25,6 +25,7 @@ module.exports = {
                 ignore: ['./', '@/'],
             },
         ],
+        'vue/html-closing-bracket-spacing': ['error'],
     },
     parserOptions: {
         parser: 'babel-eslint',
