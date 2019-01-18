@@ -1,19 +1,19 @@
 <template>
     <LayoutMain>
-        <Container> <HelloWorld /> </Container>
+        <LayoutContainer> <HelloWorld /> </LayoutContainer>
     </LayoutMain>
 </template>
 
 <script>
-import LayoutMain from './components/layout/Main';
-import Container from './components/layout/Container';
+import LayoutMain from './components/layout/Main.vue';
+import LayoutContainer from './components/layout/Container.vue';
 import HelloWorld from './components/pages/Home';
 
 export default {
     name: 'App',
     components: {
         LayoutMain,
-        Container,
+        LayoutContainer,
         HelloWorld,
     },
     data() {
@@ -22,8 +22,8 @@ export default {
         };
     },
     mounted() {
-        console.log('this.$vuetify.breakpoint', this.$vuetify.breakpoint);
-        console.log('this.$router.options', this.$router.options);
+        console.log('this.$vuetify', this.$vuetify);
+        console.log('this.$router', this.$router);
     },
 
     mutations: {

@@ -11,10 +11,20 @@ module.exports = {
         quotes: ['warn', 'single'],
         semi: ['error', 'always'],
         'no-unused-vars': ['warn'],
-
-        'linebreak-style': ['error'],
-        'no-param-reassign': ['error'],
+        'linebreak-style': ['error', 'windows'],
+        'no-param-reassign': [
+            2,
+            {
+                props: false,
+            },
+        ],
         'vue/html-indent': 4,
+        'import/no-unresolved': [
+            'error',
+            {
+                ignore: ['src/'],
+            },
+        ],
     },
     parserOptions: {
         parser: 'babel-eslint',
