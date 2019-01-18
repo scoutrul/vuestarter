@@ -8,25 +8,25 @@ import getters from './getters';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-  state: {
-    tests: null
-  },
-
-  getters,
-  mutations,
-  actions,
-
-  created() {
-    this.fetchTests();
-  },
-
-  computed: {
-    fetchTests() {
-      this.$store.dispatch('GET_TESTS');
+    state: {
+        tests: null,
     },
 
-    testsList() {
-      return this.$store.getters.TESTS;
-    }
-  }
+    getters,
+    mutations,
+    actions,
+
+    created() {
+        // this.fetchTests();
+    },
+
+    computed: {
+        fetchTests() {
+            this.$store.dispatch('GET_TESTS');
+        },
+
+        testsList() {
+            return this.$store.getters.TESTS;
+        },
+    },
 });
