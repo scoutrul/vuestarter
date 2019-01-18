@@ -3,17 +3,15 @@
     <LayoutMain>
       <LayoutHeader>
         <LayoutContainer>
-          <router-link to="/">
-Home
-</router-link>
-          <router-link to="/404">
-404
-</router-link>
+          <router-link to="/">Home</router-link>
+          <router-link to="/404">404</router-link>
         </LayoutContainer>
       </LayoutHeader>
       <LayoutBody>
         <LayoutContainer>
+          <v-fade-transition mode="out-in">
           <router-view/>
+          </v-fade-transition>
         </LayoutContainer>
       </LayoutBody>
       <LayoutFooter>

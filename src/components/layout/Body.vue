@@ -1,6 +1,8 @@
 <template>
   <v-layout fill-height>
-    <slot/>
+    <v-fade-transition mode="out-in">
+      <slot/>
+    </v-fade-transition>
   </v-layout>
 </template>
 
