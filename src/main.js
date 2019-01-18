@@ -7,7 +7,7 @@ import router from './router';
 
 import './plugins/vuetify';
 
-const unsync = sync(store, router, { moduleName: 'RouteModule' });
+const unsync = sync(store, router);
 
 new Vue({
     store,
