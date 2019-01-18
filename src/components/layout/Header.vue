@@ -1,6 +1,6 @@
 <template>
     <v-flex class="header">
-        <slot />
+        <slot/>
     </v-flex>
 </template>
 

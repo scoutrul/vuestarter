@@ -1,7 +1,7 @@
 <template>
-    <v-layout fill-height>
-        <slot />
-    </v-layout>
+  <v-layout fill-height>
+    <slot/>
+  </v-layout>
 </template>
 
 <script>

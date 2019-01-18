@@ -15,8 +15,14 @@ const router = new Router({
 			name: 'home',
 			component: Home,
 		},
-		{ path: '/404', component: fortyFour },
-		{ path: '*', redirect: '/404' },
+		{
+			path: '/404',
+			component: fortyFour,
+		},
+		{
+			path: '*',
+			redirect: '/404',
+		},
 	],
 	scrollBehavior(to, from, savedPosition) {
 		if (savedPosition) {

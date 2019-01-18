@@ -6,7 +6,7 @@
         fill-height
         class="main"
     >
-        <slot />
+        <slot/>
     </v-flex>
 </template>
 
