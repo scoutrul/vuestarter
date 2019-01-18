@@ -3,17 +3,17 @@
         <LayoutMain>
             <LayoutHeader>
                 <LayoutContainer>
-                    LayoutHeader
+                    Header
                 </LayoutContainer>
             </LayoutHeader>
             <LayoutBody>
                 <LayoutContainer>
-                    LayoutContainer
+                    <router-view />
                 </LayoutContainer>
             </LayoutBody>
             <LayoutFooter>
                 <LayoutContainer>
-                    LayoutFooter
+                    Footer
                 </LayoutContainer>
             </LayoutFooter>
         </LayoutMain>
