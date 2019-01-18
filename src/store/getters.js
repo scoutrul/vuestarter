@@ -1,5 +1,3 @@
 export default {
-  TESTS: state => {
-    return state.tests;
-  }
+    TESTS: state => state.tests,
 };

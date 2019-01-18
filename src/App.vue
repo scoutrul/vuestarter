@@ -1,17 +1,19 @@
 <template>
-    <v-app>
-        <v-content>
-            <HelloWorld/>
-        </v-content>
-    </v-app>
+    <LayoutMain>
+        <Container> <HelloWorld /> </Container>
+    </LayoutMain>
 </template>
 
 <script>
-const HelloWorld = () =>
-    import(/* webpackChunkName: "HelloWorld" */ '@/components/HelloWorld');
+import LayoutMain from './components/layout/Main';
+import Container from './components/layout/Container';
+import HelloWorld from './components/pages/Home';
+
 export default {
     name: 'App',
     components: {
+        LayoutMain,
+        Container,
         HelloWorld,
     },
     data() {
@@ -19,6 +21,11 @@ export default {
             //
         };
     },
+    mounted() {
+        console.log('this.$vuetify.breakpoint', this.$vuetify.breakpoint);
+        console.log('this.$router.options', this.$router.options);
+    },
+
     mutations: {
         SET_NAME: (state, name) => {
             state.name = name;

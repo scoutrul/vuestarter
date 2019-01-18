@@ -1,25 +1,27 @@
 module.exports = {
     root: true,
     env: {
-        node: true
+        node: true,
     },
-    'extends': [
-        'plugin:vue/essential',
-        'eslint:recommended'
-    ],
+    plugins: ['prettier'],
+    extends: ['airbnb', 'prettier', 'plugin:vue/recommended'],
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'quotes': ['warn', 'single'],
-        'semi': ['error', 'always'],
-        'no-unused-vars': 'warn',
+        quotes: ['warn', 'single'],
+        semi: ['error', 'always'],
+        'no-unused-vars': ['warn'],
+
+        'linebreak-style': ['error'],
+        'no-param-reassign': ['error'],
+        'vue/html-indent': 4,
     },
     parserOptions: {
-        parser: 'babel-eslint'
+        parser: 'babel-eslint',
     },
     globals: {
-        'moment': true,
-        'SpeechRecognition': true,
-        'SpeechGrammarList': true
-    }
+        moment: true,
+        SpeechRecognition: true,
+        SpeechGrammarList: true,
+    },
 };

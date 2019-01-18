@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import Vuetify, { VApp } from 'vuetify/lib';
+import '../assets/stylus/main.styl';
 
 Vue.use(Vuetify, {
     components: {

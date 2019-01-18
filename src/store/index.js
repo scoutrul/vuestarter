@@ -7,7 +7,7 @@ import getters from './getters';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
     state: {
         tests: null,
     },
@@ -30,3 +30,5 @@ export const store = new Vuex.Store({
         },
     },
 });
+
+export default store;

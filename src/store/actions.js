@@ -1,4 +1,4 @@
-import { get } from 'karin';
+/* eslint-disable no-unused-vars */
 
 export default {
     GET_TESTS: async (context, payload) => {
@@ -6,7 +6,7 @@ export default {
     },
 
     SAVE_TESTS: async (context, payload) => {
-        let { data } = { data: 'localstorage' };
+        const { data } = { data: 'localstorage' };
         context.commit('ADD_TEST', payload);
     },
 };
