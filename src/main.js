@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import Vue from 'vue';
 
 import store from './store';
