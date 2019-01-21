@@ -1,5 +1,5 @@
 <template>
-    <section className="container"><slot /></section>
+    <v-btn color="success">Success</v-btn>
 </template>
 
 <script>

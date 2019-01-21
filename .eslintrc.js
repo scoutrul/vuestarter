@@ -13,11 +13,8 @@ module.exports = {
 		'prettier/react',
 	],
 	rules: {
-		'prettier/prettier': 'error',
 		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-		// quotes: ['warn', 'single'],
-		// semi: ['error', 'always'],
 		'no-unused-vars': ['warn'],
 		'linebreak-style': [2, 'windows'],
 		'no-param-reassign': [
@@ -32,7 +29,7 @@ module.exports = {
 				ignore: ['./', '@/'],
 			},
 		],
-		// 'vue/html-indent': 4,
+		'vue/html-indent': 4,
 		//
 		// 'vue/html-closing-bracket-spacing': [
 		// 	'error',
@@ -40,16 +37,16 @@ module.exports = {
 		// 		selfClosingTag: 'always',
 		// 	},
 		// ],
-		// 'vue/max-attributes-per-line': [
-		// 	2,
-		// 	{
-		// 		singleline: 1,
-		// 		multiline: {
-		// 			max: 1,
-		// 			allowFirstLine: false,
-		// 		},
-		// 	},
-		// ],
+		'vue/max-attributes-per-line': [
+			4,
+			{
+				singleline: 1,
+				multiline: {
+					max: 1,
+					allowFirstLine: false,
+				},
+			},
+		],
 	},
 	parserOptions: {
 		parser: 'babel-eslint',

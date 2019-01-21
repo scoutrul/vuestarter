@@ -6,7 +6,7 @@
         "start": "npm run serve",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "eslint --ext .js,.vue src ",
+        "lint": "vue-cli-service lint",
         "lint-autofix": "eslint --ext .js,.vue src  --fix",
         "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
         "precommit": "npm run eslint-check && npm run lint"
