@@ -3,7 +3,8 @@ import Router from 'vue-router';
 
 const fortyFour = () =>
 	import(/* webpackChunkName: "fortyFour" */ './components/pages/fortyFour.vue');
-const Home = () => import(/* webpackChunkName: "Home" */ './components/pages/Home');
+const Home = () =>
+	import(/* webpackChunkName: "Home" */ './components/pages/Home');
 
 Vue.use(Router);
 const router = new Router({

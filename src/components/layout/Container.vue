@@ -1,11 +1,3 @@
 <template>
-  <div>
-    <slot/>
-  </div>
+    <section class="container"><slot /></section>
 </template>
-
-<script>
-export default {
-    data: () => ({}),
-};
-</script>

@@ -6,7 +6,10 @@
         "start": "npm run serve",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "lint": "eslint --ext .js,.vue src ",
+        "lint-autofix": "eslint --ext .js,.vue src  --fix",
+        "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+        "precommit": "npm run eslint-check && npm run lint"
     },
     "dependencies": {
         "axios": "^0.18.0",

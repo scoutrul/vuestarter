@@ -4,34 +4,52 @@ module.exports = {
 		node: true,
 	},
 	plugins: ['prettier'],
-	extends: ['airbnb', 'prettier', 'plugin:vue/recommended'],
+	extends: [
+		'airbnb',
+		'plugin:prettier/recommended',
+		'plugin:vue/recommended',
+		'prettier',
+		'prettier/vue',
+		'prettier/react',
+	],
 	rules: {
+		'prettier/prettier': 'error',
 		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-		quotes: ['warn', 'single'],
-		semi: ['error', 'always'],
+		// quotes: ['warn', 'single'],
+		// semi: ['error', 'always'],
 		'no-unused-vars': ['warn'],
-		'linebreak-style': ['error', 'windows'],
+		'linebreak-style': [2, 'windows'],
 		'no-param-reassign': [
 			2,
 			{
 				props: false,
 			},
 		],
-		'vue/html-indent': 4,
 		'import/no-unresolved': [
 			'error',
 			{
 				ignore: ['./', '@/'],
 			},
 		],
-
-		'vue/html-closing-bracket-spacing': [
-			'error',
-			{
-				selfClosingTag: 'never',
-			},
-		],
+		// 'vue/html-indent': 4,
+		//
+		// 'vue/html-closing-bracket-spacing': [
+		// 	'error',
+		// 	{
+		// 		selfClosingTag: 'always',
+		// 	},
+		// ],
+		// 'vue/max-attributes-per-line': [
+		// 	2,
+		// 	{
+		// 		singleline: 1,
+		// 		multiline: {
+		// 			max: 1,
+		// 			allowFirstLine: false,
+		// 		},
+		// 	},
+		// ],
 	},
 	parserOptions: {
 		parser: 'babel-eslint',

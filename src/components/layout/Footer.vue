@@ -1,11 +1,3 @@
 <template>
-    <div class="footer">
-        <slot/>
-    </div>
+    <footer class="footer"><slot /></footer>
 </template>
-
-<script>
-export default {
-    data: () => ({}),
-};
-</script>

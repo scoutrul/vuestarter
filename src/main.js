@@ -10,9 +10,9 @@ import './plugins/vuetify';
 const unsync = sync(store, router);
 
 new Vue({
-    store,
-    router,
-    ...App,
+	store,
+	router,
+	...App,
 }).$mount('#app');
 
 Vue.config.productionTip = false;
