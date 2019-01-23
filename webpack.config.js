@@ -72,6 +72,11 @@ const config = {
 		],
 	},
 	plugins: [new VuetifyLoaderPlugin(), new VueLoaderPlugin()],
+	resolve: {
+		alias: {
+			"@": require("path").resolve(__dirname, "src")
+		}
+	}
 };
 
 module.exports = config;
