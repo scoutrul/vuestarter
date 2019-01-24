@@ -1,5 +1,5 @@
 <template>
-    <section className="container"><slot /></section>
+    <v-layout wrap class="container"><slot /></v-layout>
 </template>
 
 <script>
