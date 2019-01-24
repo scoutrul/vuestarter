@@ -3,11 +3,12 @@
 </template>
 
 <script>
-	import HelloWorld from '../HelloWorld';
+const HelloWorld = () =>
+  import(/* webpackChunkName: "HelloWorld" */ "@/components/HelloWorld");
 
-	export default {
-		components: {
-			HelloWorld
-		}
-	};
+export default {
+  components: {
+    HelloWorld
+  }
+};
 </script>
