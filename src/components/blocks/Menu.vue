@@ -1,10 +1,9 @@
 <template>
-    <div>Home page</div>
+    <div><slot /></div>
 </template>
 
 <script>
 export default {
-    data: () => ({}),
+    props: {},
 };
 </script>
-<style></style>

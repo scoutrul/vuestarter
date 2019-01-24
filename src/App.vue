@@ -1,41 +1,43 @@
 <template>
     <v-app>
-        <LayoutMain>
-            <LayoutHeader>
-                <LayoutContainer>
-                    <router-link to="/">Home</router-link>
-                    <router-link to="/404">404</router-link>
-                </LayoutContainer>
-            </LayoutHeader>
-            <LayoutBody>
-                <LayoutContainer>
+        <Main>
+            <Header>
+                <Container>
+                    <Logo />
+                    <Menu>
+                        <router-link to="/">Home</router-link>
+                        <router-link to="/404">404</router-link>
+                    </Menu>
+                    <Button>Начать</Button>
+                </Container>
+            </Header>
+            <Body>
+                <Container>
                     <v-fade-transition mode="out-in">
                         <router-view />
                     </v-fade-transition>
-                </LayoutContainer>
-            </LayoutBody>
-            <LayoutFooter>
-                <LayoutContainer>Footer</LayoutContainer>
-            </LayoutFooter>
-        </LayoutMain>
+                </Container>
+            </Body>
+            <Footer> <Container>Footer</Container> </Footer>
+        </Main>
     </v-app>
 </template>
 
 <script>
-import LayoutMain from './components/layout/Main.vue';
-import LayoutHeader from './components/layout/Header.vue';
-import LayoutContainer from './components/layout/Container.vue';
-import LayoutBody from './components/layout/Body.vue';
-import LayoutFooter from './components/layout/Footer.vue';
+import { Main, Header, Body, Container, Footer } from './components/layout';
+import { Button, Logo, Menu } from './components/blocks';
 
 export default {
     name: 'App',
     components: {
-        LayoutMain,
-        LayoutContainer,
-        LayoutHeader,
-        LayoutFooter,
-        LayoutBody,
+        Main,
+        Container,
+        Header,
+        Footer,
+        Body,
+        Button,
+        Logo,
+        Menu,
     },
     data() {
         return {
