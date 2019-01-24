@@ -6,6 +6,7 @@ import App from './App.vue';
 import router from './router';
 
 import './plugins/vuetify';
+import './assets/stylus/index.styl';
 
 const unsync = sync(store, router);
 
