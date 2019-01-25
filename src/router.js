@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import AsyncComponent from './utils/AsyncComponent';
 
 const fortyFour = () =>
 	import(/* webpackChunkName: "fortyFour" */ './components/pages/fortyFour.vue');
@@ -21,26 +20,26 @@ const router = new Router({
 		{
 			path: '/',
 			name: 'home',
-			component: AsyncComponent(Home),
+			component: Home,
 		},
 		{
 			path: '/project',
 			name: 'project',
-			component: AsyncComponent(Project),
+			component: Project,
 		},
 		{
 			path: '/record',
 			name: 'record',
-			component: AsyncComponent(Record),
+			component: Record,
 		},
 		{
 			path: '/start',
 			name: 'start',
-			component: AsyncComponent(Start),
+			component: Start,
 		},
 		{
 			path: '/404',
-			component: AsyncComponent(fortyFour),
+			component: fortyFour,
 		},
 		{
 			path: '*',

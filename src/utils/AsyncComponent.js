@@ -1,12 +1,12 @@
-const Loading = `<template><div>loading</div></template>`;
-const Error = `<template><div>error</div></template>`;
+import AsyncLoadError from './AsyncLoadError';
+import AsyncLoading from './AsyncLoading';
 
 const AsyncComponent = imp => ({
 	component: imp,
-	loading: Loading,
-	error: Error,
-	delay: 200,
-	timeout: 2000,
+	loading: AsyncLoading,
+	delay: 300,
+	error: AsyncLoadError,
+	timeout: 10000,
 });
 
 export default AsyncComponent;

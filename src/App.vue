@@ -22,7 +22,21 @@
 
 <script>
 import { Main, Header, Body, Container, Footer } from './components/layout';
-import { Menu } from './components/blocks';
+
+import AsyncComponent from './utils/AsyncComponent';
+
+const Logo = () =>
+    AsyncComponent(
+        import(/* webpackChunkName: "Logo" */ './components/blocks/Logo'),
+    );
+const Menu = () =>
+    AsyncComponent(
+        import(/* webpackChunkName: "Menu" */ './components/blocks/Menu'),
+    );
+const Button = () =>
+    AsyncComponent(
+        import(/* webpackChunkName: "Button" */ './components/blocks/Button'),
+    );
 
 export default {
     name: 'App',
@@ -32,11 +46,9 @@ export default {
         Header,
         Footer,
         Body,
-        Button: () =>
-            import(/* webpackChunkName: "Button" */ './components/blocks/Button'),
-        Logo: () =>
-            import(/* webpackChunkName: "Logo" */ './components/blocks/Logo'),
+        Button,
         Menu,
+        Logo,
     },
     data() {
         return {
