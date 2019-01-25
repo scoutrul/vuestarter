@@ -1,5 +1,5 @@
 <template>
-    <div>Главная</div>
+    <div>Запись к врачу</div>
 </template>
 
 <script>

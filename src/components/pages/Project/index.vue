@@ -1,5 +1,5 @@
 <template>
-    <div>Главная</div>
+    <div>О проекте</div>
 </template>
 
 <script>

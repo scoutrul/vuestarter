@@ -4,10 +4,7 @@
             <Header>
                 <Container>
                     <Logo />
-                    <Menu>
-                        <router-link to="/">Home</router-link>
-                        <router-link to="/404">404</router-link>
-                    </Menu>
+                    <Menu />
                     <Button>Начать</Button>
                 </Container>
             </Header>
@@ -25,7 +22,7 @@
 
 <script>
 import { Main, Header, Body, Container, Footer } from './components/layout';
-import { Button, Logo, Menu } from './components/blocks';
+import { Menu } from './components/blocks';
 
 export default {
     name: 'App',
@@ -35,8 +32,10 @@ export default {
         Header,
         Footer,
         Body,
-        Button,
-        Logo,
+        Button: () =>
+            import(/* webpackChunkName: "Button" */ './components/blocks/Button'),
+        Logo: () =>
+            import(/* webpackChunkName: "Logo" */ './components/blocks/Logo'),
         Menu,
     },
     data() {

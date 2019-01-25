@@ -1,5 +1,5 @@
 <template>
-    <div>Главная</div>
+    <div>Старт</div>
 </template>
 
 <script>
