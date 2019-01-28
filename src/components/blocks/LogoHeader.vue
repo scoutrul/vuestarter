@@ -3,6 +3,12 @@
         <router-link to="/">
             <img
                 v-if="isMobileWidth()"
+                src="../../assets/images/logo_sm.svg"
+                alt="MedAboutMe
+            диспансеризация"
+            />
+            <img
+                v-else-if="isTabletWidth()"
                 src="../../assets/images/logo_min.svg"
                 alt="MedAboutMe
             диспансеризация"
@@ -20,8 +26,11 @@
 <script>
 export default {
     methods: {
+        isTabletWidth() {
+            return this.$vuetify.breakpoint.lgAndDown;
+        },
         isMobileWidth() {
-            return this.$vuetify.breakpoint.mdAndDown;
+            return this.$vuetify.breakpoint.xs;
         },
     },
 };

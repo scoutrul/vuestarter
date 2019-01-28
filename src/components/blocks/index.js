@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button from './ButtonHeader';
 import Menu from './Menu';
 import LogoHeader from './LogoHeader';
 import LogoFooter from './LogoFooter';

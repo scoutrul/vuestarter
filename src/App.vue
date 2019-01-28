@@ -5,8 +5,10 @@
                 <Container class="header__container">
                     <LogoHeader />
                     <Menu />
-                    <Button v-if="isCheckupDone">Скачать анкету</Button>
-                    <Button v-else>Начать</Button>
+                    <ButtonHeader v-if="isCheckupDone"
+                        >Скачать анкету</ButtonHeader
+                    >
+                    <ButtonHeader v-else>Начать</ButtonHeader>
                 </Container>
             </Header>
             <Body>
@@ -44,9 +46,9 @@ const Menu = () =>
     AsyncComponent(
         import(/* webpackChunkName: "Menu" */ './components/blocks/Menu'),
     );
-const Button = () =>
+const ButtonHeader = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "Button" */ './components/blocks/Button'),
+        import(/* webpackChunkName: "ButtonHeader" */ './components/blocks/ButtonHeader'),
     );
 const Copyrights = () =>
     AsyncComponent(
@@ -61,7 +63,7 @@ export default {
         Header,
         Footer,
         Body,
-        Button,
+        ButtonHeader,
         Menu,
         LogoHeader,
         LogoFooter,
