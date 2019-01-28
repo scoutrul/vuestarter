@@ -1,5 +1,5 @@
 <template>
-    <v-flex>
+    <v-flex class="logo">
         <router-link to="/">
             <img
                 v-if="isMobileWidth()"

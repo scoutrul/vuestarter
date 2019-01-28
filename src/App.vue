@@ -2,10 +2,11 @@
     <v-app>
         <Main>
             <Header>
-                <Container>
+                <Container class="header__container">
                     <Logo />
                     <Menu />
-                    <Button>Начать</Button>
+                    <Button v-if="isCheckupDone">Скачать анкету</Button>
+                    <Button v-else>Начать</Button>
                 </Container>
             </Header>
             <Body>
@@ -52,7 +53,7 @@ export default {
     },
     data() {
         return {
-            //
+            isCheckupDone: false,
         };
     },
     mounted() {
