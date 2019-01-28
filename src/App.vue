@@ -32,7 +32,7 @@
 <script>
 import { Main, Header, Body, Container, Footer } from './components/layout';
 
-import AsyncComponent from './utils/AsyncComponent';
+import AsyncComponent from './components/utils/AsyncComponent';
 
 const LogoHeader = () =>
     AsyncComponent(
@@ -69,6 +69,7 @@ export default {
         LogoFooter,
         Copyrights,
     },
+
     data() {
         return {
             isCheckupDone: false,
@@ -77,8 +78,8 @@ export default {
     mounted() {
         console.log('this.$vuetify', this.$vuetify);
         console.log('this.$router', this.$router);
+        console.log('this', this);
     },
-
     mutations: {
         SET_NAME: (state, name) => {
             state.name = name;

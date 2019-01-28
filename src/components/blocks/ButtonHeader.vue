@@ -1,6 +1,6 @@
 <template>
     <v-btn
-        v-show="isTabletWidth()"
+        v-show="is768Above()"
         depressed
         flat
         round
@@ -13,12 +13,10 @@
 </template>
 
 <script>
+import { $viewport } from '../../mixins/index';
+
 export default {
-    methods: {
-        isTabletWidth() {
-            return this.$vuetify.breakpoint.width > 768;
-        },
-    },
+    mixins: [$viewport],
 };
 </script>
 

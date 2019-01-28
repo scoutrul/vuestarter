@@ -24,14 +24,9 @@
 </template>
 
 <script>
+import { $viewport } from '../../mixins';
+
 export default {
-    methods: {
-        isTabletWidth() {
-            return this.$vuetify.breakpoint.lgAndDown;
-        },
-        isMobileWidth() {
-            return this.$vuetify.breakpoint.xs;
-        },
-    },
+    mixins: [$viewport],
 };
 </script>
