@@ -4,4 +4,4 @@ import LogoHeader from './LogoHeader';
 import LogoFooter from './LogoFooter';
 import Copyrights from './Copyrights';
 
-export { Button, Menu, LogoHeader, Copyrights };
+export { Button, Menu, LogoHeader, Copyrights, LogoFooter };
