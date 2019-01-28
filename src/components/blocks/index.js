@@ -1,5 +1,7 @@
 import Button from './Button';
 import Menu from './Menu';
-import Logo from './Logo';
+import LogoHeader from './LogoHeader';
+import LogoFooter from './LogoFooter';
+import Copyrights from './Copyrights';
 
-export { Button, Menu, Logo };
+export { Button, Menu, LogoHeader, Copyrights };

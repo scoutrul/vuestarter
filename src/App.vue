@@ -3,7 +3,7 @@
         <Main>
             <Header>
                 <Container class="header__container">
-                    <Logo />
+                    <LogoHeader />
                     <Menu />
                     <Button v-if="isCheckupDone">Скачать анкету</Button>
                     <Button v-else>Начать</Button>
@@ -16,7 +16,13 @@
                     </v-fade-transition>
                 </Container>
             </Body>
-            <Footer> <Container>Footer</Container> </Footer>
+            <Footer>
+                <Container class="footer__container">
+                    <LogoFooter />
+                    <Copyrights />
+                    <Menu />
+                </Container>
+            </Footer>
         </Main>
     </v-app>
 </template>
@@ -26,9 +32,13 @@ import { Main, Header, Body, Container, Footer } from './components/layout';
 
 import AsyncComponent from './utils/AsyncComponent';
 
-const Logo = () =>
+const LogoHeader = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "Logo" */ './components/blocks/Logo'),
+        import(/* webpackChunkName: "LogoHeader" */ './components/blocks/LogoHeader'),
+    );
+const LogoFooter = () =>
+    AsyncComponent(
+        import(/* webpackChunkName: "LogoFooter" */ './components/blocks/LogoFooter'),
     );
 const Menu = () =>
     AsyncComponent(
@@ -37,6 +47,10 @@ const Menu = () =>
 const Button = () =>
     AsyncComponent(
         import(/* webpackChunkName: "Button" */ './components/blocks/Button'),
+    );
+const Copyrights = () =>
+    AsyncComponent(
+        import(/* webpackChunkName: "Copyrights" */ './components/blocks/Copyrights'),
     );
 
 export default {
@@ -49,7 +63,9 @@ export default {
         Body,
         Button,
         Menu,
-        Logo,
+        LogoHeader,
+        LogoFooter,
+        Copyrights,
     },
     data() {
         return {
