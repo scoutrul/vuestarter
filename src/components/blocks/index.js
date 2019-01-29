@@ -1,7 +1,7 @@
-import Button from './ButtonHeader';
-import Menu from './Menu';
-import LogoHeader from './LogoHeader';
-import LogoFooter from './LogoFooter';
-import Copyrights from './Copyrights';
+import Button from './ButtonHeader/ButtonHeader';
+import Menu from './Menu/Menu';
+import LogoHeader from './Logo/LogoHeader';
+import LogoFooter from './Logo/LogoFooter';
+import Copyrights from './Copyrights/Copyrights';
 
 export { Button, Menu, LogoHeader, Copyrights, LogoFooter };

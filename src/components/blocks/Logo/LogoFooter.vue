@@ -63,3 +63,6 @@
 <script>
 export default {};
 </script>
+<style lang="stylus">
+@import './logo.styl';
+</style>

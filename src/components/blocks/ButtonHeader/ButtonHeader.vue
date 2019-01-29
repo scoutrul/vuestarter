@@ -13,11 +13,14 @@
 </template>
 
 <script>
-import { $viewport } from '../../mixins/index';
+import { $viewport } from '../../../mixins';
 
 export default {
     mixins: [$viewport],
 };
 </script>
 
-<style></style>
+<style lang="stylus">
+@import '../../../assets/styles/vars/';
+@import './button.styl';
+</style>

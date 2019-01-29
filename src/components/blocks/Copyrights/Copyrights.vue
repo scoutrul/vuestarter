@@ -5,3 +5,6 @@
 <script>
 export default {};
 </script>
+<style lang="stylus">
+@import './copyrights.styl';
+</style>

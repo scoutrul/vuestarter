@@ -36,23 +36,23 @@ import AsyncComponent from './components/utils/AsyncComponent';
 
 const LogoHeader = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "LogoHeader" */ './components/blocks/LogoHeader'),
+        import(/* webpackChunkName: "LogoHeader" */ './components/blocks/Logo/LogoHeader'),
     );
 const LogoFooter = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "LogoFooter" */ './components/blocks/LogoFooter'),
+        import(/* webpackChunkName: "LogoFooter" */ './components/blocks/Logo/LogoFooter'),
     );
 const Menu = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "Menu" */ './components/blocks/Menu'),
+        import(/* webpackChunkName: "Menu" */ './components/blocks/Menu/Menu'),
     );
 const ButtonHeader = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "ButtonHeader" */ './components/blocks/ButtonHeader'),
+        import(/* webpackChunkName: "ButtonHeader" */ './components/blocks/ButtonHeader/ButtonHeader'),
     );
 const Copyrights = () =>
     AsyncComponent(
-        import(/* webpackChunkName: "Copyrights" */ './components/blocks/Copyrights'),
+        import(/* webpackChunkName: "Copyrights" */ './components/blocks/Copyrights/Copyrights'),
     );
 
 export default {

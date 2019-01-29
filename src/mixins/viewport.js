@@ -3,11 +3,14 @@ const $viewport = {
 		is768Above() {
 			return this.$vuetify.breakpoint.width > 768;
 		},
-		isTabletWidth() {
+		isLgAndDown() {
 			return this.$vuetify.breakpoint.lgAndDown;
 		},
-		isMobileWidth() {
-			return this.$vuetify.breakpoint.xs;
+		isSmAndDown() {
+			return this.$vuetify.breakpoint.smAndDown;
+		},
+		isXs() {
+			return this.$vuetify.breakpoint.xsOnly;
 		},
 	},
 };
