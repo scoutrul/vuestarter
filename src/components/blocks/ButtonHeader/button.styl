@@ -3,9 +3,15 @@
 	background-color $yellow
 	margin 0
 	width 100%
-	flex: 0 1 240px;
+	flex: 1 1 160px;
 	max-width 240px
 	height 48px
+	bottom 0;
+	@media (max-width 600px)
+		position: fixed;
+		bottom: 24px;
+		left: 50%;
+		transform: translateX(-50%);
 	.v-btn__content
 		color $button_text
 		text-transform: none

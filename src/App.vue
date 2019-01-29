@@ -20,9 +20,30 @@
             </Body>
             <Footer>
                 <Container class="footer__container">
-                    <LogoFooter />
-                    <Copyrights />
-                    <Menu />
+                    <v-flex
+                        order-xs2
+                        order-sm1
+                        order-md1
+                        order-lg1
+                        class="footer__logo"
+                        ><LogoFooter
+                    /></v-flex>
+                    <v-flex
+                        order-xs1
+                        order-sm2
+                        order-md2
+                        order-lg2
+                        class="footer__menu"
+                        ><Menu
+                    /></v-flex>
+                    <v-flex
+                        class="footer__copy"
+                        order-xs3
+                        order-sm3
+                        order-md3
+                        order-lg3
+                        ><Copyrights
+                    /></v-flex>
                 </Container>
             </Footer>
         </Main>
@@ -31,6 +52,7 @@
 
 <script>
 import { Main, Header, Body, Container, Footer } from './components/layout';
+import { $viewport } from './mixins';
 
 import AsyncComponent from './components/utils/AsyncComponent';
 
@@ -69,6 +91,7 @@ export default {
         LogoFooter,
         Copyrights,
     },
+    mixins: [$viewport],
 
     data() {
         return {

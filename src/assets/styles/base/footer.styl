@@ -3,11 +3,24 @@
 	&__container
 		height: fit-content;
 		align-items: center;
+		flex-wrap wrap
 	.logo
-		svg
-			display block
-	ul.menu
-		justify-content: flex-end;
-		flex 1 0 auto
-	.cta
+		margin 20px 0
+	&__menu
+		@media(max-width: 700px)
+			flex: 1 1 100%;
+			order 0 !important
+			.menu
+				flex-flow row wrap
+				margin-bottom 24px
+				@media(max-width: 400px)
+					flex-flow column wrap
+		ul.menu
+			justify-content: flex-start;
+			li
+				margin-left 0
+				line-height 100%
+
+	.copyrights
 		display block
+		flex 1 1 320px

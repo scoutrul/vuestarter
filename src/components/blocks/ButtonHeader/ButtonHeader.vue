@@ -1,13 +1,5 @@
 <template>
-    <v-btn
-        v-show="is768Above()"
-        depressed
-        flat
-        round
-        dark
-        ripple
-        class="button__yellow"
-    >
+    <v-btn depressed flat round dark ripple class="button__yellow">
         <slot />
     </v-btn>
 </template>

@@ -1,7 +1,10 @@
 const $viewport = {
 	methods: {
-		is768Above() {
-			return this.$vuetify.breakpoint.width > 768;
+		isAbove680() {
+			return this.$vuetify.breakpoint.width > 680;
+		},
+		isUnder680() {
+			return this.$vuetify.breakpoint.width < 680;
 		},
 		isLgAndDown() {
 			return this.$vuetify.breakpoint.lgAndDown;
