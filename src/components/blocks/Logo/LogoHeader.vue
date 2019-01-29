@@ -154,9 +154,6 @@ import { $viewport } from '../../../mixins';
 
 export default {
     mixins: [$viewport],
-    created() {
-        console.log(this.isAbove680(), this.isLgAndDown(), this.isXs());
-    },
 };
 </script>
 <style lang="stylus">

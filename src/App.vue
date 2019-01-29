@@ -99,8 +99,6 @@ export default {
         };
     },
     mounted() {
-        console.log('this.$vuetify', this.$vuetify);
-        console.log('this.$router', this.$router);
         console.log('this', this);
     },
     mutations: {

@@ -5,11 +5,7 @@
 </template>
 
 <script>
-import { $viewport } from '../../../mixins';
-
-export default {
-    mixins: [$viewport],
-};
+export default {};
 </script>
 
 <style lang="stylus">
