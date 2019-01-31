@@ -1,6 +1,7 @@
 <template>
     <v-app>
         <Main>
+            <ButtonHeader class="button__fix">Начать</ButtonHeader>
             <Header>
                 <Container class="header__container">
                     <LogoHeader />

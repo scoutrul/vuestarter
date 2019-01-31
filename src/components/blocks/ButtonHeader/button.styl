@@ -8,12 +8,19 @@
 	height 48px
 	bottom 0;
 	@media (max-width 600px)
-		position: fixed;
-		bottom: 24px;
-		left: 50%;
-		transform: translateX(-50%);
+		display none
 	.v-btn__content
 		color $button_text
 		text-transform: none
 		font-weight: bold;
 		font-size 16px
+
+.button__fix
+	display none
+	bottom 0
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	@media (max-width 600px)
+		bottom: 24px;
+		display flex
