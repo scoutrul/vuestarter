@@ -1,5 +1,4 @@
 @import '../../../assets/styles/vars/index.styl';
-
 .menu
 	display: flex;
 	padding: 0;
@@ -7,16 +6,15 @@
 	align-self center
 	list-style none
 	li
+		@media (max-width $MD_break)
+			margin 0 10px
 		margin: 0 20px
 		line-height: 24px;
 		font-weight: bold;
 		display flex
-		&:first-child
-			margin-left 40px
+
 		&:last-child
 			margin-right 0
-		@media (max-width $MD_break)
-			margin 0 10px !important
 		a
 			font-size: 16px;
 			color: $Black_Text;
@@ -24,3 +22,20 @@
 			transition $transition_hover
 			&:hover
 				color $Lighter_Text
+
+.footer__menu
+	@media(max-width: $MD_break)
+		flex: 1 1 100%;
+		order 0 !important
+	.menu
+		flex-flow row wrap
+		margin-bottom 24px
+		justify-content: flex-end;
+		@media(max-width: $XS_break)
+			flex-flow column wrap
+		@media(max-width: $MD_break)
+			justify-content: flex-start;
+		li
+			line-height 100%
+			&:first-child
+				margin-left 0
