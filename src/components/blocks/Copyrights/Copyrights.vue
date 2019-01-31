@@ -1,5 +1,5 @@
 <template>
-    <v-flex class="copyrights"> Medaboutme 2019. Все права защищены.</v-flex>
+    <v-flex class="copyrights">Medaboutme 2019. Все права защищены.</v-flex>
 </template>
 
 <script>

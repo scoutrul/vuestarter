@@ -1,5 +1,5 @@
 <template>
-    <ul class="menu flex" :class="[isAbove680() || 'justify-end']">
+    <ul class="menu flex">
         <li><router-link to="/project">О проекте</router-link></li>
         <li><router-link to="/record">Запись к врачу</router-link></li>
     </ul>

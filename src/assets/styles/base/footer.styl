@@ -18,7 +18,9 @@
 				@media(max-width: $XS_break)
 					flex-flow column wrap
 		ul.menu
-			justify-content: flex-start;
+			justify-content: flex-end;
+			@media(max-width: $MD_break)
+				justify-content: flex-start;
 			li
 				margin-left 0
 				line-height 100%
