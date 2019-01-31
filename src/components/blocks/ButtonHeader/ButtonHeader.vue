@@ -9,6 +9,5 @@ export default {};
 </script>
 
 <style lang="stylus">
-@import '../../../assets/styles/vars/';
 @import './button.styl';
 </style>
