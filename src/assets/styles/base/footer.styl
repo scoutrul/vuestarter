@@ -1,3 +1,5 @@
+@import '../vars/index.styl';
+
 .footer
 	display flex
 	&__container
@@ -7,13 +9,13 @@
 	.logo
 		margin 20px 0
 	&__menu
-		@media(max-width: 700px)
+		@media(max-width: $MD_break)
 			flex: 1 1 100%;
 			order 0 !important
 			.menu
 				flex-flow row wrap
 				margin-bottom 24px
-				@media(max-width: 400px)
+				@media(max-width: $XS_break)
 					flex-flow column wrap
 		ul.menu
 			justify-content: flex-start;

@@ -15,7 +15,12 @@
 			margin-left 40px
 		&:last-child
 			margin-right 0
+		@media (max-width $MD_break)
+			margin 0 10px !important
 		a
 			font-size: 16px;
 			color: $Black_Text;
 			text-decoration none
+			transition $transition_hover
+			&:hover
+				color $Lighter_Text
