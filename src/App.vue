@@ -1,15 +1,13 @@
 <template>
     <v-app>
         <Main>
-            <ButtonHeader class="button__fix">Начать</ButtonHeader>
+            <Button class="button__fix">Начать</Button>
             <Header>
                 <Container class="header__container">
                     <LogoHeader />
                     <Menu />
-                    <ButtonHeader v-if="isCheckupDone"
-                        >Скачать анкету</ButtonHeader
-                    >
-                    <ButtonHeader v-else>Начать</ButtonHeader>
+                    <Button v-if="isCheckupDone">Скачать анкету</Button>
+                    <Button v-else>Начать</Button>
                 </Container>
             </Header>
             <Body>
@@ -36,30 +34,14 @@
 
 <script>
 import { Main, Header, Body, Container, Footer } from './components/layout';
+import {
+    LogoHeader,
+    LogoFooter,
+    Menu,
+    Copyrights,
+    Button,
+} from './components/blocks';
 import { $viewport } from './mixins';
-
-import AsyncComponent from './components/utils/AsyncComponent';
-
-const LogoHeader = () =>
-    AsyncComponent(
-        import(/* webpackChunkName: "LogoHeader" */ './components/blocks/Logo/LogoHeader'),
-    );
-const LogoFooter = () =>
-    AsyncComponent(
-        import(/* webpackChunkName: "LogoFooter" */ './components/blocks/Logo/LogoFooter'),
-    );
-const Menu = () =>
-    AsyncComponent(
-        import(/* webpackChunkName: "Menu" */ './components/blocks/Menu/Menu'),
-    );
-const ButtonHeader = () =>
-    AsyncComponent(
-        import(/* webpackChunkName: "ButtonHeader" */ './components/blocks/ButtonHeader/ButtonHeader'),
-    );
-const Copyrights = () =>
-    AsyncComponent(
-        import(/* webpackChunkName: "Copyrights" */ './components/blocks/Copyrights/Copyrights'),
-    );
 
 export default {
     name: 'App',
@@ -69,7 +51,7 @@ export default {
         Header,
         Footer,
         Body,
-        ButtonHeader,
+        Button,
         Menu,
         LogoHeader,
         LogoFooter,

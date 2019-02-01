@@ -5,7 +5,7 @@
     "scripts": {
         "start": "npm run serve",
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "build": "vue-cli-service build && http-server ./dist",
         "lint": "vue-cli-service lint",
         "lint-autofix": "eslint --ext .js,.vue src  --fix",
         "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
