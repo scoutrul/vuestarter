@@ -12,6 +12,7 @@
 		line-height: 24px;
 		font-weight: bold;
 		display flex
+		line-height 100%
 
 		&:last-child
 			margin-right 0
@@ -31,11 +32,11 @@
 		flex-flow row wrap
 		margin-bottom 24px
 		justify-content: flex-end;
-		@media(max-width: $XS_break)
-			flex-flow column wrap
 		@media(max-width: $MD_break)
 			justify-content: flex-start;
-		li
-			line-height 100%
-			&:first-child
-				margin-left 0
+			li
+				margin 0 20px 0 0
+		@media(max-width: $XS_break)
+			li
+				margin 0
+			flex-flow column wrap
