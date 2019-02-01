@@ -1,5 +1,5 @@
 <template>
-    <v-flex class="header"> <slot /> </v-flex>
+    <v-flex class="header shrink"> <slot /> </v-flex>
 </template>
 
 <script>
