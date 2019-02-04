@@ -1,6 +1,6 @@
 <template>
     <v-layout :style="{ color: bgColor }" column class="content_container">
-        <v-layout v-if="isTop | isTopReverse" class="container">
+        <v-layout v-if="isTop | isTopReverse" class="flex-end">
             <svg
                 :class="['arc', 'arc_top', isTopReverse && 'reverse']"
                 width="7688"
@@ -19,13 +19,18 @@
                 />
             </svg>
         </v-layout>
-        <v-flex
-            class="container content_block"
-            :class="[isUnder600() && 'isUnder600']"
-        >
-            <slot></slot>
-        </v-flex>
-        <v-layout v-if="isBottom | isBottomReverse" class="container">
+        <div class="wrap">
+            <v-layout
+                class="container"
+                :class="[
+                    isUnder600() && 'isUnder600',
+                    (isTop || isTopReverse) && 'full-width',
+                ]"
+            >
+                <slot></slot>
+            </v-layout>
+        </div>
+        <v-layout v-if="isBottom | isBottomReverse" class="flex-start">
             <svg
                 :class="['arc', 'arc_bottom', isBottomReverse && 'reverse']"
                 width="7688"
@@ -70,5 +75,13 @@ export default {
 @import "style.styl"
 .isUnder600 {
     flex-flow column nowrap
+}
+.flex-end {
+    align-items flex-end}
+.flex-start {
+    align-items flex-start
+}
+.wrap {
+    background-color currentColor
 }
 </style>

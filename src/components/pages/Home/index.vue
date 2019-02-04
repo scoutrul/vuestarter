@@ -10,9 +10,9 @@
                 </RegularMd>
                 <Button>Начать</Button>
             </v-flex>
-            <v-flex md7 sm6 align-self-end>
+            <v-flex md7 sm6 class="section1_pic">
                 <svg
-                    class="section1_picture"
+                    class="svg"
                     viewBox="0 0 612 385"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +168,6 @@
 
 <script>
 import { Section, Header1, RegularMd, Button } from '../../blocks';
-import { $viewport } from '../../../mixins';
 
 export default {
     components: {
@@ -177,13 +176,17 @@ export default {
         RegularMd,
         Button,
     },
-    mixins: [$viewport],
 };
 </script>
 <style lang="stylus">
-.section1_picture {
+.section1_pic {
+    align-items: flex-end;
+    display: flex;
+}
+
+.svg {
     width: 100%
     height: auto
-    transform translateY(100px)
+    transform: translateY(20%)
 }
 </style>
