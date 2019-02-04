@@ -1,12 +1,5 @@
 <template>
-    <v-layout
-        column
-        :style="{
-            background: bgColor,
-            color: bgColor,
-        }"
-        class="content_container"
-    >
+    <v-layout :style="{ color: bgColor }" column class="content_container">
         <template v-if="isTop | isTopReverse">
             <svg
                 :class="['arc', 'arc_top', isTopReverse && 'reverse']"
@@ -18,7 +11,6 @@
             >
                 <path
                     d="M7688 0C6560.46 95.5195 5246.64 150.3 3844 150.3C2441.36 150.3 1127.54 95.5195 -0.000244141 0H7688Z"
-                    :fill="isTopReverse ? bgColor : '#FFFFFF'"
                 />
             </svg>
         </template>
@@ -34,7 +26,6 @@
             >
                 <path
                     d="M7688 0C6560.46 95.5195 5246.64 150.3 3844 150.3C2441.36 150.3 1127.54 95.5195 -0.000244141 0H7688Z"
-                    :fill="isBottomReverse ? bgColor : '#FFFFFF'"
                 />
             </svg>
         </template>
@@ -48,7 +39,7 @@ export default {
         isTopReverse: Boolean,
         isBottom: Boolean,
         isBottomReverse: Boolean,
-        bgColor: { type: String, default: '#FFF' },
+        bgColor: { type: String, default: '#E6F3FF' },
     },
     data: () => ({}),
     created() {
@@ -65,8 +56,11 @@ export default {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    color: $Lighter_Blue
     path {
         transform-origin center
+        color $Main_White
+        fill currentColor
     }
     &_top {
         top 0
@@ -92,8 +86,8 @@ export default {
     }
 }
 .content_container {
-    position: relative;
-
+    color: $Lighter_Blue
+    position: relative
     margin-bottom 20px
     &:before {
         content: '';
