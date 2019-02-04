@@ -1,10 +1,11 @@
 <template>
     <v-layout column>
-        <Content is-top is-bottom bg-color="#00BAFF">sec</Content>
-        <Content is-top-reverse is-bottom-reverse bg-color="#00BAFF"
-            >first</Content
+        <Content is-top is-bottom bg-color="gray">sec</Content>
+        <Content is-top is-bottom-reverse bg-color="magenta">sec</Content>
+        <Content is-top-reverse is-bottom bg-color="gray">sec</Content>
+        <Content is-top-reverse is-bottom-reverse bg-color="magenta"
+            >sec</Content
         >
-        <Content bg-color="#00BAFF">3333333</Content>
     </v-layout>
 </template>
 

@@ -3,7 +3,9 @@
         column
         :style="{
             background: bgColor,
+            color: bgColor,
         }"
+        class="content_container"
     >
         <template v-if="isTop | isTopReverse">
             <svg
@@ -20,7 +22,7 @@
                 />
             </svg>
         </template>
-        <v-layout> <slot></slot> </v-layout>
+        <v-layout class="content_block"> <slot></slot> </v-layout>
         <template v-if="isBottom | isBottomReverse">
             <svg
                 :class="['arc', 'arc_bottom', isBottomReverse && 'reverse']"
@@ -56,27 +58,56 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+@import "../../../assets/styles/vars"
 .arc {
-    width: 100%;
-    height auto
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     path {
         transform-origin center
     }
-    &_top path {
-        transform: rotateX(0deg);
+    &_top {
+        top 0
+        path {
+            transform: rotateX(0deg);
+        }
     }
-    &_bottom path {
+    &_bottom {
+        bottom 0
+        path {
             transform: rotateX(-180deg);
+        }
     }
     &.reverse {
-        background #FFF
+        background $Main_White
         &.arc_top path {
-                transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
 
         }
         &.arc_bottom path {
-                transform: rotateX(0deg);
+            transform: rotateX(0deg);
         }
     }
+}
+.content_container {
+    position: relative;
+
+    margin-bottom 20px
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        background:  currentColor
+        transform: translateX(-50%);
+    }
+}
+.content_block {
+    min-height 160px
 }
 </style>
