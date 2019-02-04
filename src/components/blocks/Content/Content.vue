@@ -10,11 +10,16 @@
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <path
+                    v-if="isTopReverse"
                     d="M7688 0C6560.46 95.5195 5246.64 150.3 3844 150.3C2441.36 150.3 1127.54 95.5195 -0.000244141 0H7688Z"
+                />
+                <path
+                    v-else
+                    d="M0.996393 0H0.925049V152H7689.01V0H7689C6561.46 95.5195 5247.64 150.3 3845 150.3C2442.36 150.3 1128.53 95.5195 0.996393 0Z"
                 />
             </svg>
         </template>
-        <v-layout class="content_block"> <slot></slot> </v-layout>
+        <v-flex class="content_block"> <slot></slot> </v-flex>
         <template v-if="isBottom | isBottomReverse">
             <svg
                 :class="['arc', 'arc_bottom', isBottomReverse && 'reverse']"
@@ -25,7 +30,12 @@
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <path
+                    v-if="isBottomReverse"
                     d="M7688 0C6560.46 95.5195 5246.64 150.3 3844 150.3C2441.36 150.3 1127.54 95.5195 -0.000244141 0H7688Z"
+                />
+                <path
+                    v-else
+                    d="M0.996393 0H0.925049V152H7689.01V0H7689C6561.46 95.5195 5247.64 150.3 3845 150.3C2442.36 150.3 1128.53 95.5195 0.996393 0Z"
                 />
             </svg>
         </template>
@@ -39,7 +49,7 @@ export default {
         isTopReverse: Boolean,
         isBottom: Boolean,
         isBottomReverse: Boolean,
-        bgColor: { type: String, default: '#E6F3FF' },
+        bgColor: { type: String, default: '#d9f5ff' },
     },
     data: () => ({}),
     created() {
@@ -49,59 +59,5 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import "../../../assets/styles/vars"
-.arc {
-    width: 100vw;
-    height: auto;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: $Lighter_Blue
-    path {
-        transform-origin center
-        color $Main_White
-        fill currentColor
-    }
-    &_top {
-        top 0
-        path {
-            transform: rotateX(0deg);
-        }
-    }
-    &_bottom {
-        bottom 0
-        path {
-            transform: rotateX(-180deg);
-        }
-    }
-    &.reverse {
-        background $Main_White
-        &.arc_top path {
-            transform: rotateX(-180deg);
-
-        }
-        &.arc_bottom path {
-            transform: rotateX(0deg);
-        }
-    }
-}
-.content_container {
-    color: $Lighter_Blue
-    position: relative
-    margin-bottom 20px
-    &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        width: 100vw;
-        background:  currentColor
-        transform: translateX(-50%);
-    }
-}
-.content_block {
-    min-height 160px
-}
+@import "style.styl"
 </style>

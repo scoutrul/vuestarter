@@ -3,6 +3,9 @@ const $viewport = {
 		isAbove680() {
 			return this.$vuetify.breakpoint.width > 680;
 		},
+		isUnder600() {
+			return this.$vuetify.breakpoint.width < 600;
+		},
 		isSmAndDown() {
 			return this.$vuetify.breakpoint.smAndDown;
 		},

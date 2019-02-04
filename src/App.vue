@@ -41,7 +41,6 @@ import {
     Copyrights,
     Button,
 } from './components/blocks';
-import { $viewport } from './mixins';
 
 export default {
     name: 'App',
@@ -57,7 +56,6 @@ export default {
         LogoFooter,
         Copyrights,
     },
-    mixins: [$viewport],
 
     data() {
         return {

@@ -1,0 +1,67 @@
+@import "../../../assets/styles/vars"
+
+.arc {
+    width: 100vw;
+    height: auto;
+    position: relative;
+    left: 50%;
+    z-index 2
+    path {
+        transform-origin center
+        fill currentColor
+    }
+    &_top {
+        top 0
+        transform: rotateX(0deg) translateX(-50%);
+    }
+    &_bottom {
+        bottom 0
+        transform: rotateX(180deg) translateX(-50%);
+    }
+    &.reverse {
+        background $Main_White
+        &.arc_top {
+            transform: translateX(-50%) translateY(calc(0% + 12px))
+        }
+        &.arc_bottom {
+            transform: translateX(-50%) translateY(calc(0% - 12px));
+        }
+    }
+}
+.content_container {
+    color: transparent
+    position: relative
+    margin-bottom 20px
+    z-index 1
+    &:nth-child(2) {
+        z-index 2
+    }
+    .content_block {
+        min-height 60px
+        padding 40px 0
+        &:after {
+            content ''
+            display: block;
+            position: absolute;
+            top: 37px;
+            bottom: 37px;
+            left: 50%;
+            width: 100vw;
+            background: currentColor
+            transform: translateX(-50%);
+            z-index 0
+        }
+    }
+}
+
+.wraper {
+    display: block;
+    position: absolute;
+    top: 37px;
+    bottom: 37px;
+    left: 50%;
+    width: 100vw;
+    background: currentColor
+    transform: translateX(-50%);
+    z-index 0
+}
