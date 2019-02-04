@@ -3,7 +3,7 @@ import Menu from './Menu/Menu';
 import LogoHeader from './Logo/LogoHeader';
 import LogoFooter from './Logo/LogoFooter';
 import Copyrights from './Copyrights/Copyrights';
-import Content from './Content/Content';
+import Section from './Section/Section';
 import { Header1, RegularMd } from './Typography/index';
 
 export {
@@ -12,7 +12,7 @@ export {
 	LogoHeader,
 	Copyrights,
 	LogoFooter,
-	Content,
+	Section,
 	Header1,
 	RegularMd,
 };

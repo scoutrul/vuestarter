@@ -11,11 +11,9 @@
                 </Container>
             </Header>
             <Body>
-                <Container>
-                    <v-fade-transition mode="out-in">
-                        <router-view />
-                    </v-fade-transition>
-                </Container>
+                <v-fade-transition mode="out-in">
+                    <router-view />
+                </v-fade-transition>
             </Body>
             <Footer>
                 <Container class="footer__container">

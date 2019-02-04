@@ -1,6 +1,6 @@
 <template>
     <v-layout :style="{ color: bgColor }" column class="content_container">
-        <template v-if="isTop | isTopReverse">
+        <v-layout v-if="isTop | isTopReverse" class="container">
             <svg
                 :class="['arc', 'arc_top', isTopReverse && 'reverse']"
                 width="7688"
@@ -18,9 +18,14 @@
                     d="M0.996393 0H0.925049V152H7689.01V0H7689C6561.46 95.5195 5247.64 150.3 3845 150.3C2442.36 150.3 1128.53 95.5195 0.996393 0Z"
                 />
             </svg>
-        </template>
-        <v-flex class="content_block"> <slot></slot> </v-flex>
-        <template v-if="isBottom | isBottomReverse">
+        </v-layout>
+        <v-flex
+            class="container content_block"
+            :class="[isUnder600() && 'isUnder600']"
+        >
+            <slot></slot>
+        </v-flex>
+        <v-layout v-if="isBottom | isBottomReverse" class="container">
             <svg
                 :class="['arc', 'arc_bottom', isBottomReverse && 'reverse']"
                 width="7688"
@@ -38,12 +43,15 @@
                     d="M0.996393 0H0.925049V152H7689.01V0H7689C6561.46 95.5195 5247.64 150.3 3845 150.3C2442.36 150.3 1128.53 95.5195 0.996393 0Z"
                 />
             </svg>
-        </template>
+        </v-layout>
     </v-layout>
 </template>
 
 <script>
+import { $viewport } from '../../../mixins';
+
 export default {
+    mixins: [$viewport],
     props: {
         isTop: Boolean,
         isTopReverse: Boolean,
@@ -60,4 +68,7 @@ export default {
 
 <style scoped lang="stylus">
 @import "style.styl"
+.isUnder600 {
+    flex-flow column nowrap
+}
 </style>

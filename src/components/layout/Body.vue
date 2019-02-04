@@ -1,7 +1,5 @@
 <template>
-    <v-layout column fill-height>
-        <v-fade-transition mode="out-in"> <slot /> </v-fade-transition>
-    </v-layout>
+    <v-layout column fill-height> <slot /> </v-layout>
 </template>
 
 <script>
