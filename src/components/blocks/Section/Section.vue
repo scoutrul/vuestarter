@@ -62,7 +62,7 @@ export default {
         isTopReverse: Boolean,
         isBottom: Boolean,
         isBottomReverse: Boolean,
-        bgColor: { type: String, default: '#d9f5ff' },
+        bgColor: { type: String, default: 'transparent' },
     },
     data: () => ({}),
     created() {
@@ -85,5 +85,6 @@ export default {
 .wrap {
     background-color currentColor
     flex-flow column nowrap
+    z-index 9
 }
 </style>
