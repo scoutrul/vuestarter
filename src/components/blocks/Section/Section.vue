@@ -74,14 +74,16 @@ export default {
 <style scoped lang="stylus">
 @import "style.styl"
 .isUnder600 {
-    flex-flow column nowrap
+    flex-flow column nowrap !important
 }
 .flex-end {
-    align-items flex-end}
+    align-items flex-end
+}
 .flex-start {
     align-items flex-start
 }
 .wrap {
     background-color currentColor
+    flex-flow column nowrap
 }
 </style>

@@ -1,16 +1,18 @@
 <template>
     <v-layout column>
-        <Section bg-color="transparent">
-            <v-flex flex md5 sm6 xs12>
-                <Header1>Оцените свое здоровье прямо сейчас</Header1>
-                <RegularMd>
+        <Section bg-color="transparent" class="section1">
+            <v-flex flex sm6 xs12>
+                <Header1 class="pad16"
+                    >Оцените свое здоровье прямо сейчас</Header1
+                >
+                <RegularMd class="pad16">
                     Пройдите комплексную проверку здоровья и получите список
                     обследований, которые вы сможете пройти в рамках программы
                     всеобщей диспансеризации. Это совершенно бесплатно!
                 </RegularMd>
-                <Button>Начать</Button>
+                <div class="pad16"><Button>Начать</Button></div>
             </v-flex>
-            <v-flex md7 sm6 class="section1_pic">
+            <v-flex sm6 class="section1_pic">
                 <svg
                     class="svg"
                     viewBox="0 0 612 385"
@@ -155,38 +157,122 @@
             </v-flex>
         </Section>
 
-        <Section is-top is-bottom>
-            <Header1>С чего начать?</Header1>
-            <RegularMd>
-                Мы подготовили комплекс тестов, которые помогут вам понять свое
-                самочувствие, оценить состояние здоровья и узнать, какие
-                обследования вам нужно пройти
-            </RegularMd>
+        <Section is-top>
+            <v-layout column class="section2">
+                <Header1 class="pad16">С чего начать?</Header1>
+                <RegularLg class="pad16 max960">
+                    Мы подготовили комплекс тестов, которые помогут вам понять
+                    свое самочувствие, оценить состояние здоровья и узнать,
+                    какие обследования вам нужно пройти
+                </RegularLg>
+                <div class=" banner">
+                    <Header2 class="pad16">Комплексное тестирование</Header2>
+                    <RegularLg class="pad16"
+                        >Пройдя проверку, вы получите список персональных
+                        рекомендаций по состоянию вашего здоровья. Кроме того,
+                        мы заполним анкету для прохождения профосмотра или
+                        диспансеризации в вашей поликлинике и вы сэкономите свое
+                        время</RegularLg
+                    >
+                    <v-layout class="pad16" align-center>
+                        <Button>Начать</Button>
+                        <div class="note">Можно продолжить в любое время</div>
+                    </v-layout>
+                </div>
+            </v-layout>
         </Section>
+
+        <Section> </Section>
     </v-layout>
 </template>
 
 <script>
-import { Section, Header1, RegularMd, Button } from '../../blocks';
+import {
+    Section,
+    Header1,
+    Header2,
+    RegularMd,
+    RegularLg,
+    Button,
+} from '../../blocks';
 
 export default {
     components: {
         Section,
         Header1,
+        Header2,
         RegularMd,
+        RegularLg,
         Button,
     },
 };
 </script>
 <style lang="stylus">
+@import '../../../assets/styles/vars/index.styl';
+.banner {
+    text-align left
+    color #FFF
+    background: #00BAFF;
+    box-shadow: 0px 20px 50px rgba(19, 24, 31, 0.1);
+    border-radius: 16px;
+    flex-flow: column wrap !important;
+    padding 41px 52px
+    background-image url("./../../../assets/images/banner_bg.svg")
+    background-position: 101% top;
+    background-repeat: no-repeat;
+    background-size contain
+    * {
+        color #FFF !important
+    }
+    .note {
+        opacity .65
+        font-size: 16px;
+        margin-left: 16px
+    }
+}
+
 .section1_pic {
     align-items: flex-end;
     display: flex;
+    position relative
+    @media (max-width $cta_button_brake) {
+        margin-bottom: -24%;
+        transform: translateX(5%) translateY(-10%);
+    }
+    @media (max-width $XS_break) {
+        margin-bottom: -18%
+    }
 }
 
 .svg {
-    width: 100%
-    height: auto
-    transform: translateY(20%)
+    transform: translateY(22%) translateX(-50%);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    min-width 520px
+    @media (max-width 1200px) {
+        transform: translateY(22%) translateX(-40%);
+    }
+    @media (max-width 960px) {
+        transform: translateY(16%) translateX(-30%);
+    }
+    @media (max-width $cta_button_brake) {
+        min-width 100%
+        position static
+        transform none
+    }
+}
+
+.pad16  {
+    padding 16px 0
+}
+
+.section2 {
+    margin: 128px 0;
+    text-align: center;
+}
+.max960 {
+    max-width 960px
+    margin auto
 }
 </style>
