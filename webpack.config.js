@@ -44,10 +44,20 @@ const config = {
 			},
 			{
 				test: /\.vue$/,
-				loader: 'vue-loader',
-				options: {
-					sourceMap,
-				},
+				use: [
+					{
+						loader: 'vue-loader',
+						options: {
+							sourceMap,
+						},
+					},
+					{
+						loader: 'vue-svg-inline-loader',
+						options: {
+							/* ... */
+						},
+					},
+				],
 			},
 			{
 				test: /\.js$/,
