@@ -1,0 +1,142 @@
+@import '~@/assets/styles/vars/index.styl';
+.special {
+	line-height: 18px;
+	font-size: 13px;
+	color $Lighter_Text
+	max-width: 400px;
+}
+.section4 {
+	padding-top: 100px
+}
+.block {
+	background-color white
+	display flex
+	flex-flow column
+	align-content center
+	width 100%
+	max-width: 280px;
+	box-shadow: 0px 8px 30px rgba(19, 24, 31, 0.08);
+	border-radius: 12px;
+	line-height: 24px;
+	font-size: 16px;
+	color $Black_Text
+	justify-content: flex-start;
+	padding: 40px 0px 20px;
+	font-weight bold
+	p {
+		padding 0 20px
+	}
+}
+.card {
+	width 100%
+	max-width: 341px;
+	height: 84px;
+	background: #FFFFFF;
+	box-shadow: 0px 8px 30px rgba(19, 24, 31, 0.08);
+	border-radius: 8px;
+	line-height: 18px;
+	font-size: 13px;
+	color $Lighter_Text
+}
+.banner {
+	text-align left
+	color #FFF
+	background: #00BAFF;
+	box-shadow: 0px 20px 50px rgba(19, 24, 31, 0.1);
+	border-radius: 16px;
+	flex-flow: column wrap !important;
+	padding 41px 52px
+	background-image url("~@/assets/images/banner_bg.svg")
+	background-position: 101% top;
+	background-repeat: no-repeat;
+	background-size contain
+	transform: translateY(80px);
+	p, h1, h2 {
+		color #FFF
+	}
+	.note {
+		opacity .65
+		font-size: 16px;
+		margin-left: 16px
+	}
+}
+
+.section1_pic {
+	align-items: flex-end;
+	display: flex;
+	position relative
+	@media (max-width $cta_button_brake) {
+		margin-bottom: -24%;
+		transform: translateX(5%) translateY(-10%);
+	}
+	@media (max-width $XS_break) {
+		margin-bottom: -18%
+	}
+	svg, img {
+		transform: translateY(22%) translateX(-50%);
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		min-width 520px
+		@media (max-width $XL_break) {
+			transform: translateY(22%) translateX(-40%);
+		}
+		@media (max-width $LG_break) {
+			transform: translateY(16%) translateX(-30%);
+		}
+		@media (max-width $cta_button_brake) {
+			min-width 100%
+			position static
+			transform none
+		}
+	}
+}
+.section5 {
+	@media (max-width $cta_button_brake) {
+		flex-flow column wrap
+	}
+}
+.section5_pic {
+	display: flex;
+	justify-content: center;
+	@media (max-width $LG_break) {
+		justify-content: end;
+		flex-flow column wrap
+	}
+	svg {
+		min-width 775px
+		max-width 100%
+		@media (max-width $XL_break) {
+			min-width 500px
+		}
+
+		@media (max-width $XS_break) {
+			min-width 100%
+		}
+
+	}
+}
+
+.pad16  {
+	padding 16px 0
+}
+
+.max960 {
+	max-width 960px
+	margin auto
+}
+.max760 {
+	max-width 760px
+	margin auto
+}
+
+.section2 {
+	margin: 120px 0 0;
+	text-align: center;
+}
+
+.section3 {
+	@media (max-width $MD_break) {
+		flex-direction column
+	}
+}

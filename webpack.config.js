@@ -34,15 +34,6 @@ const config = {
 				},
 			},
 			{
-				test: /\.(png|jpg|gif|styl|css)$/,
-				use: [
-					{
-						loader: 'file-loader',
-						options: {},
-					},
-				],
-			},
-			{
 				test: /\.vue$/,
 				use: [
 					{
