@@ -1,6 +1,7 @@
 const { VueLoaderPlugin } = require('vue-loader');
 const nodeSassMagicImporter = require('node-sass-magic-importer');
 const poststylus = require('poststylus');
+const path = require('path');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 const env = process.env.NODE_ENV;
@@ -24,6 +25,24 @@ const config = {
 	module: {
 		rules: [
 			{
+				test: /\.(woff)(\?\S*)?$/,
+				loader: 'file-loader',
+				include: path.resolve(__dirname, '../src'),
+				options: {
+					name: '[path][name].[ext]',
+					context: '',
+				},
+			},
+			{
+				test: /\.(png|jpg|gif|styl|css)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {},
+					},
+				],
+			},
+			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: {
@@ -39,7 +58,12 @@ const config = {
 			},
 			{
 				test: /\.css$/,
-				use: ['vue-style-loader', 'style-loader!css-loader'],
+				use: [
+					'style-loader',
+					'css-loader',
+					'vue-style-loader',
+					'style-loader!css-loader',
+				],
 			},
 			{
 				test: /\.scss$/,
@@ -61,6 +85,8 @@ const config = {
 					'style-loader',
 					'css-loader',
 					'stylus-loader',
+					'vue-style-loader',
+					'style-loader!css-loader',
 					{
 						loader: 'style-loader!css-loader!stylus-loader',
 						options: {
@@ -70,6 +96,11 @@ const config = {
 				],
 			},
 		],
+	},
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, './src'),
+		},
 	},
 	plugins: [new VuetifyLoaderPlugin(), new VueLoaderPlugin()],
 };

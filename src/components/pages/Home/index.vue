@@ -685,7 +685,6 @@ export default {
 };
 </script>
 <style lang="stylus">
-@import '../../../assets/styles/vars/index.styl';
 .special {
     line-height: 18px;
     font-size: 13px;
@@ -733,7 +732,7 @@ export default {
     border-radius: 16px;
     flex-flow: column wrap !important;
     padding 41px 52px
-    background-image url("./../../../assets/images/banner_bg.svg")
+    background-image url("~@/assets/images/banner_bg.svg")
     background-position: 101% top;
     background-repeat: no-repeat;
     background-size contain

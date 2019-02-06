@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-const fortyFour = () =>
-	import(/* webpackChunkName: "fortyFour" */ './components/pages/fortyFour.vue');
+import fortyFour from './components/pages/fortyFour.vue';
+// import Home from './components/pages/Home';
+
 const Home = () =>
 	import(/* webpackChunkName: "Home" */ './components/pages/Home');
 const Project = () =>

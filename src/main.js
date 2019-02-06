@@ -7,8 +7,6 @@ import router from './router';
 
 import './plugins/vuetify';
 
-import './assets/styles/index.styl';
-
 const unsync = sync(store, router);
 
 new Vue({
