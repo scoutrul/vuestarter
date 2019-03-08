@@ -5,11 +5,14 @@
     "scripts": {
         "start": "npm run serve",
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build && http-server ./dist",
+        "server": "vue-cli-service build && http-server ./dist",
+        "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "lint-autofix": "eslint --ext .js,.vue src  --fix",
         "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-        "precommit": "npm run eslint-check && npm run lint"
+        "precommit": "npm run eslint-check && npm run lint",
+        "deploy": "cross-env NODE_ENV=ghPages && npm run build && gh-pages-deploy",
+        "clean-source": "rimraf README.md src webroot package.json"
     },
     "dependencies": {
         "axios": "^0.18.0",
@@ -42,6 +45,7 @@
         "eslint-plugin-prettier": "^3.0.1",
         "eslint-plugin-react": "^7.11.0",
         "eslint-plugin-vue": "^5.1.0",
+        "gh-pages-deploy": "^0.5.1",
         "node-sass": "^4.11.0",
         "node-sass-magic-importer": "^5.3.0",
         "prettier": "^1.15.3",
@@ -79,5 +83,9 @@
         "> 1%",
         "last 2 versions",
         "not ie <= 8"
-    ]
+    ],
+    "gh-pages-deploy": {
+        "staticpath": "dist",
+        "noprompt": false
+    }
 }

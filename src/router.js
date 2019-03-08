@@ -7,10 +7,6 @@ const Home = () =>
 	import(/* webpackChunkName: "Home" */ './components/pages/Home');
 const Project = () =>
 	import(/* webpackChunkName: "Project" */ './components/pages/Project');
-const Record = () =>
-	import(/* webpackChunkName: "Record" */ './components/pages/Record');
-const Start = () =>
-	import(/* webpackChunkName: "Start" */ './components/pages/Start');
 
 Vue.use(Router);
 const router = new Router({
@@ -26,16 +22,6 @@ const router = new Router({
 			path: '/project',
 			name: 'project',
 			component: Project,
-		},
-		{
-			path: '/record',
-			name: 'record',
-			component: Record,
-		},
-		{
-			path: '/start',
-			name: 'start',
-			component: Start,
 		},
 		{
 			path: '/404',

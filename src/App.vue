@@ -6,8 +6,7 @@
                 <Container class="header__container">
                     <LogoHeader />
                     <Menu />
-                    <Button v-if="isCheckupDone">Скачать анкету</Button>
-                    <Button v-else>Начать</Button>
+                    <Button>Кнопка</Button>
                 </Container>
             </Header>
             <Body>
