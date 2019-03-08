@@ -11,7 +11,7 @@
         "lint-autofix": "eslint --ext .js,.vue src  --fix",
         "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
         "precommit": "npm run eslint-check && npm run lint",
-        "deploy": "cross-env NODE_ENV=ghPages && npm run build && gh-pages-deploy",
+        "deploy": "npm run build && gh-pages-deploy",
         "clean-source": "rimraf README.md src webroot package.json"
     },
     "dependencies": {
