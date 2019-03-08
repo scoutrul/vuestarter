@@ -1,6 +1,6 @@
 <template>
     <ul class="menu flex">
-        <li><router-link to="/project">О проекте</router-link></li>
+        <li><router-link to="/project">About</router-link></li>
     </ul>
 </template>
 

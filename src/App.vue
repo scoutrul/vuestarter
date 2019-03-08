@@ -1,12 +1,12 @@
 <template>
     <v-app>
         <Main>
-            <Button class="button__fix">Начать</Button>
+            <Button class="button__fix">Go!</Button>
             <Header>
                 <Container class="header__container">
                     <LogoHeader />
                     <Menu />
-                    <Button>Кнопка</Button>
+                    <Button>Go!</Button>
                 </Container>
             </Header>
             <Body>
