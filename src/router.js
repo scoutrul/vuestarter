@@ -7,6 +7,8 @@ const Home = () =>
 	import(/* webpackChunkName: "Home" */ './components/pages/Home');
 const Project = () =>
 	import(/* webpackChunkName: "Project" */ './components/pages/Project');
+const Leagues = () =>
+	import(/* webpackChunkName: "Leagues" */ './components/pages/Leagues');
 
 Vue.use(Router);
 const router = new Router({
@@ -17,6 +19,11 @@ const router = new Router({
 			path: '/',
 			name: 'home',
 			component: Home,
+		},
+		{
+			path: '/leagues',
+			name: 'leagues',
+			component: Leagues,
 		},
 		{
 			path: '/project',

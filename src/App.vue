@@ -64,7 +64,7 @@ export default {
         };
     },
     mounted() {
-        console.log('this', this);
+        // console.log('this', this);
     },
     mutations: {
         SET_NAME: (state, name) => {
