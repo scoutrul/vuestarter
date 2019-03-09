@@ -1,14 +1,48 @@
 @import '../vars/index.styl';
 
 .footer
-	display flex
+	display flex;
+	overflow hidden
+	flex: 1 0 auto;
+	margin-top 64px
 	&__container
+		transform: translateY(100%);
+		&.animateShow {
+			transform: translateY(0);
+			transition: $transition_footer .25s
+		}
 		height: fit-content;
 		align-items: center;
-		flex-wrap wrap
-	.logo
-		margin 20px 0
+		flex-direction: row !important;
+		@media(max-width: $MD_break)
+			flex-direction column !important;
+			align-items: flex-start;
+	&__logo {
+		@media(min-width: $MD_break) {
+			max-width: 200px !important;
+		}
+		.logo {
+			margin 20px 20px 20px 0
+		}
+	}
 
 	.copyrights
 		display block
 		flex 1 1 320px
+		@media(max-width: $XS_break)
+			line-height: 100%;
+			margin: 0 0 10px 0;
+	&__menu
+		.menu
+			flex-flow row nowrap
+			justify-content: flex-start;
+			@media(min-width: $MD_break)
+				justify-content: flex-end;
+				margin 0 0 0 20px
+			li
+				margin 0 20px 0 0
+				white-space: nowrap;
+				@media(max-width: $XS_break)
+					flex-flow column wrap
+				@media(min-width: $LG_break)
+					margin 0 0 0 20px !important

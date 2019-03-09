@@ -9,6 +9,8 @@ const Project = () =>
 	import(/* webpackChunkName: "Project" */ './components/pages/Project');
 const Leagues = () =>
 	import(/* webpackChunkName: "Leagues" */ './components/pages/Leagues');
+const Live = () =>
+	import(/* webpackChunkName: "Live" */ './components/pages/Live');
 
 Vue.use(Router);
 const router = new Router({
@@ -19,6 +21,11 @@ const router = new Router({
 			path: '/',
 			name: 'home',
 			component: Home,
+		},
+		{
+			path: '/live',
+			name: 'live',
+			component: Live,
 		},
 		{
 			path: '/leagues',
