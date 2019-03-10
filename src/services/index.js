@@ -10,4 +10,10 @@ export default {
 			.header('X-RapidAPI-Key', token)
 			.then(res => res);
 	},
+	getTeamLogo(teamId) {
+		return unirest
+			.get(`${url}/teams/team/${teamId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => res);
+	},
 };

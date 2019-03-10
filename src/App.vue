@@ -1,7 +1,6 @@
 <template>
     <v-app>
         <Main>
-
             <Header ref="header" :style="getHeaderHeight">
                 <Container class="header__container">
                     <LogoHeader />
@@ -13,34 +12,7 @@
                     <router-view />
                 </v-fade-transition>
             </Body>
-            <Footer
-                ref="footer"
-                :class="[!footerAllowPages && 'footer-display-none']"
-            >
-                <Container
-                    class="footer__container"
-                    :class="[isFooterShow() && 'animateShow']"
-                >
-                    <v-flex
-                        order-xs1
-                        order-sm3
-                        order-md3
-                        order-lg3
-                        xs12
-                        sm12
-                        md6
-                        lg6
-                        class="footer__menu"
-                        ><Menu
-                    /></v-flex>
-                    <v-flex order-xs2 order-sm1 xs12 md3 class="footer__logo"
-                        ><LogoFooter
-                    /></v-flex>
-                    <v-flex order-xs3 order-sm2 xs12 xs7 spacer
-                        ><Copyrights
-                    /></v-flex>
-                </Container>
-            </Footer>
+            
         </Main>
     </v-app>
 </template>
@@ -52,7 +24,7 @@ import {
     LogoFooter,
     Menu,
     Copyrights,
-    StartButton,
+
 } from './components/blocks';
 
 export default {
@@ -103,9 +75,6 @@ export default {
         this.registerHandlers();
     },
 
-    beforeDestroy() {
-        this.unregisterHandlers();
-    },
     methods: {
         isHeaderScrolled() {
             return this.pageYOffset >= this.headerHeight;
@@ -117,17 +86,7 @@ export default {
                 this.appHeight === this.innerHeight
             );
         },
-        registerHandlers() {
-            window.addEventListener('scroll', this.handlerScrollWindow);
-        },
-        unregisterHandlers() {
-            window.removeEventListener('scroll', this.handlerScrollWindow);
-        },
-        handlerScrollWindow() {
-            this.pageYOffset = window.pageYOffset;
-            this.innerHeight = window.innerHeight;
-            this.appHeight = this.$el.clientHeight;
-        },
+
     },
 };
 </script>
