@@ -15,20 +15,6 @@ const store = new Vuex.Store({
 	getters,
 	mutations,
 	actions,
-
-	created() {
-		// this.fetchTests();
-	},
-
-	computed: {
-		fetchTests() {
-			this.$store.dispatch('GET_TESTS');
-		},
-
-		testsList() {
-			return this.$store.getters.TESTS;
-		},
-	},
 });
 
 export default store;

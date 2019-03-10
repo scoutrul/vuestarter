@@ -1,6 +1,7 @@
 <template>
     <ul class="menu flex">
-        <li><router-link to="/project">About</router-link></li>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/live">Live</router-link></li>
     </ul>
 </template>
 
