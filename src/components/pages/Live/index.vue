@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Live</h1>
-    <div>
+    <div v-if="fixtures.length" >
       <v-layout column v-for="fixture of fixtures" :key="fixture.fixture_id" class="goal--event">
         <v-layout class="goal--center goal--round">{{fixture.round}}</v-layout>
         <v-layout>
@@ -9,7 +9,7 @@
             <div class="goal--center">
               {{fixture.homeTeam}}
               <br>
-              <img :src="getLogoSrc(fixture.homeTeam_id).logo" alt height="80px">
+              <!-- <img :src="getLogoSrc(fixture.homeTeam_id).logo" alt height="80px"> -->
             </div>
           </v-flex>
           <v-layout class="goal--center" column>
@@ -23,13 +23,14 @@
             <div class="goal--center">
               {{fixture.awayTeam}}
               <br>
-              <img :src="getLogoSrc(fixture.awayTeam_id).logo" alt height="80px">
+              <!-- <img :src="getLogoSrc(fixture.awayTeam_id).logo" alt height="80px"> -->
             </div>
           </v-flex>
         </v-layout>
         <v-layout class="goal--center goal--round">Статистика</v-layout>
       </v-layout>
     </div>
+    <v-layout v-else>No results</v-layout>
   </div>
 </template>
 
@@ -58,7 +59,7 @@ export default {
   },
   computed: {
     getLogoSrc() {
-      return id => find(this.logos, logo => logo.team_id == id);
+      return id => find(this.logos, logo => logo.team_id == id) || '';
     },
   },
 
