@@ -9,7 +9,7 @@ import './plugins/vuetify';
 
 import './assets/styles/index.styl';
 
-const unsync = sync(store, router);
+sync(store, router);
 
 new Vue({
 	store,
@@ -19,4 +19,4 @@ new Vue({
 
 Vue.config.productionTip = false;
 
-unsync();
+

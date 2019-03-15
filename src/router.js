@@ -11,6 +11,8 @@ const Leagues = () =>
 	import(/* webpackChunkName: "Leagues" */ './components/pages/Leagues');
 const Live = () =>
 	import(/* webpackChunkName: "Live" */ './components/pages/Live');
+const Fixture = () =>
+	import(/* webpackChunkName: "Fixture" */ './components/pages/Fixture');
 
 Vue.use(Router);
 const router = new Router({
@@ -26,6 +28,11 @@ const router = new Router({
 			path: '/live',
 			name: 'live',
 			component: Live,
+		},
+		{
+			path: '/live/:id',
+			name: 'fixture',
+			component: Fixture,
 		},
 		{
 			path: '/leagues',

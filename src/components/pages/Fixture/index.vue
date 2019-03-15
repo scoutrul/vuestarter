@@ -9,7 +9,7 @@
             <div class="goal--center">
               {{fixture.homeTeam}}
               <br>
-              <img :src="getLogoSrc(fixture.homeTeam_id)" alt height="80px">
+              <!-- <img :src="getLogoSrc(fixture.homeTeam_id)" alt height="80px"> -->
             </div>
           </v-flex>
           <v-layout class="goal--center" column>
@@ -23,12 +23,12 @@
             <div class="goal--center">
               {{fixture.awayTeam}}
               <br>
-              <img :src="getLogoSrc(fixture.awayTeam_id)" alt height="80px">
+              <!-- <img :src="getLogoSrc(fixture.awayTeam_id)" alt height="80px"> -->
             </div>
           </v-flex>
         </v-layout>
         <v-layout class="goal--center goal--round">
-            <router-link :to="{ name: 'fixture', params: {id: fixture.fixture_id}}">Статистика матча</router-link>
+            <!-- <router-link :to="{ name: 'fixture', params: {id: fixture.fixture_id}}">Статистика матча</router-link> -->
         </v-layout>
       </v-layout>
     </div>
@@ -63,17 +63,12 @@ export default {
       .then(this.getTeamsLogos);
   },
   computed: {
-    getLogoSrc() {
-        return id => {
-            try {
-                const findLogo = find(this.logos, logo => logo.team_id == id);
-                return findLogo.logo;
-            }
-            catch(e){
-                    return '';
-            }
-        }
-    },
+    // getLogoSrc() {
+    //   return id => {
+    //       const findLogo = find(this.logos, logo => logo.team_id == id);
+    //       return findLogo.logo || '';
+    //     }
+    // },
   },
 
   methods: {
