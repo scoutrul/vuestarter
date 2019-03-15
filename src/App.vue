@@ -69,7 +69,6 @@ export default {
     },
     mounted() {
         this.headerHeight = this.$refs.header.$el.clientHeight;
-        this.footerHeight = this.$refs.footer.$el.clientHeight;
         this.appHeight = this.$el.clientHeight;
         this.innerHeight = window.innerHeight;
         this.registerHandlers();
@@ -79,14 +78,17 @@ export default {
         isHeaderScrolled() {
             return this.pageYOffset >= this.headerHeight;
         },
-        isFooterShow() {
-            return (
-                this.pageYOffset >=
-                    this.appHeight - this.footerHeight - this.innerHeight ||
-                this.appHeight === this.innerHeight
-            );
+        registerHandlers() {
+            window.addEventListener('scroll', this.handlerScrollWindow);
         },
-
+        unregisterHandlers() {
+            window.removeEventListener('scroll', this.handlerScrollWindow);
+        },
+        handlerScrollWindow() {
+            this.pageYOffset = window.pageYOffset;
+            this.innerHeight = window.innerHeight;
+            this.appHeight = this.$el.clientHeight;
+        },
     },
 };
 </script>

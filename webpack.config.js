@@ -1,34 +1,48 @@
 const { VueLoaderPlugin } = require('vue-loader');
 const nodeSassMagicImporter = require('node-sass-magic-importer');
 const poststylus = require('poststylus');
+const path = require('path');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 const env = process.env.NODE_ENV;
 const sourceMap = env === 'development';
 
 const config = {
-	devtool: sourceMap ? 'cheap-module-eval-source-map' : undefined,
+	devtool: 'nosources-source-map',
 	entry: {
 		index: './src/main.js',
 	},
 	mode: env,
 	output: {
 		publicPath: '/',
-		chunkFilename: '[name].bundle.js',
-	},
-	optimization: {
-		splitChunks: {
-			chunks: 'all',
-		},
 	},
 	module: {
 		rules: [
 			{
-				test: /\.vue$/,
-				loader: 'vue-loader',
+				test: /\.(woff)(\?\S*)?$/,
+				loader: 'file-loader',
+				include: path.resolve(__dirname, '../src'),
 				options: {
-					sourceMap,
+					name: '[path][name].[ext]',
+					context: '',
 				},
+			},
+			{
+				test: /\.vue$/,
+				use: [
+					{
+						loader: 'vue-loader',
+						options: {
+							sourceMap,
+						},
+					},
+					{
+						loader: 'vue-svg-inline-loader',
+						options: {
+							/* ... */
+						},
+					},
+				],
 			},
 			{
 				test: /\.js$/,
@@ -39,7 +53,12 @@ const config = {
 			},
 			{
 				test: /\.css$/,
-				use: ['vue-style-loader', 'style-loader!css-loader'],
+				use: [
+					'style-loader',
+					'css-loader',
+					'vue-style-loader',
+					'style-loader!css-loader',
+				],
 			},
 			{
 				test: /\.scss$/,
@@ -58,9 +77,9 @@ const config = {
 			{
 				test: /\.styl$/,
 				use: [
-					'style-loader',
-					'css-loader',
 					'stylus-loader',
+					'vue-style-loader',
+					'style-loader!css-loader',
 					{
 						loader: 'style-loader!css-loader!stylus-loader',
 						options: {
@@ -70,6 +89,11 @@ const config = {
 				],
 			},
 		],
+	},
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, './src'),
+		},
 	},
 	plugins: [new VuetifyLoaderPlugin(), new VueLoaderPlugin()],
 };

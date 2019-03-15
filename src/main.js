@@ -18,5 +18,3 @@ new Vue({
 }).$mount('#app');
 
 Vue.config.productionTip = false;
-
-
