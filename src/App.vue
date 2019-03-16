@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <Main>
-            <Header ref="header" :style="getHeaderHeight">
+            <Header ref="header">
                 <Container class="header__container">
                     <LogoHeader />
                     <Menu />
@@ -12,19 +12,15 @@
                     <router-view />
                 </v-fade-transition>
             </Body>
-            
         </Main>
     </v-app>
 </template>
 
 <script>
-import { Main, Header, Body, Container, Footer } from './components/layout';
+import { Main, Header, Body, Container } from './components/layout';
 import {
     LogoHeader,
-    LogoFooter,
     Menu,
-    Copyrights,
-
 } from './components/blocks';
 
 export default {
@@ -33,12 +29,9 @@ export default {
         Main,
         Container,
         Header,
-        Footer,
         Body,
         Menu,
         LogoHeader,
-        LogoFooter,
-        Copyrights,
     },
 
     data() {
@@ -95,7 +88,5 @@ export default {
 
 <style lang="stylus">
 @import '~@/assets/styles/index.styl';
-.footer-display-none {
-    display none
-}
+
 </style>
