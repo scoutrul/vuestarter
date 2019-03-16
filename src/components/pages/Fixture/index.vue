@@ -54,25 +54,32 @@ export default {
     teams: {},
     logos: [],
   }),
-  mounted() {
+  beforeMount() {
     api
       .getApi('fixtures/live')
       .then(res => {
         this.api = { ...this.api, ...res.body.api};
+        this.getTeamsLogos()
       })
-      .then(this.getTeamsLogos);
   },
-  computed: {
-    getLogoSrc() {
-      return id => {
-          const findLogo = find(this.logos, logo => logo.team_id == id);
-          return findLogo.logo || '';
+  methods: {
+      getLogoSrc() {
+        return id => {
+            if(this.logoIsLoaded) {
+                
+                try {
+                    // const findLogo = find(this.logos, logo => logo.team_id == id);
+                return find(this.logos, logo => logo.team_id == id).logo;
+            }
+                catch(e){
+                    console.log(e);
+                    return '';
+                }
+            }
         }
     },
-  },
-
-  methods: {
     getTeamsLogos() {
+      this.logoIsLoaded = false;
       let promises = [];
       forEach(this.fixtures, (fixture, key) => {
         promises.push(
@@ -93,8 +100,12 @@ export default {
         );
       });
       Promise.all(promises)
-        .then(res => console.log('done'))
+        .then(res => {
+            this.logoIsLoaded = true;
+            console.log('done')
+        })
         .catch(reason => {
+          this.logoIsLoaded = true;  
           console.log(reason);
         });
     },
