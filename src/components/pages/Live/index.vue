@@ -35,20 +35,20 @@
             </div>
           </v-flex>
         </v-layout>
-        <v-layout class="goal--center goal--round">Статистика</v-layout>
+         <v-layout class="goal--center goal--round">
+            <router-link :to="{ name: 'fixture', params: {id: fixture.fixture_id}}">Статистика матча</router-link>
+        </v-layout>
       </v-layout>
     </div>
   </div>
 </template>
 
 <script>
-import unirest from 'unirest';
 import api from '@/services/';
 import forEach from 'lodash/forEach';
 import map from 'lodash/map';
 import assign from 'lodash/assign';
 import assignIn from 'lodash/assignIn';
-
 import find from 'lodash/find';
 import mapKeys from 'lodash/mapKeys';
 
@@ -57,6 +57,7 @@ export default {
     fixtures: {},
     logos: {},
     logosHaveResolved: false,
+    emptyLogo: 'http://clipart-library.com/image_gallery/348752.gif',
   }),
   mounted() {
     api
@@ -66,27 +67,12 @@ export default {
       })
       .then(this.getTeamsLogos);
   },
-  computed: {
-    // getLogoSrc() {
-    //   return id =>
-    //     (this.logos[id] && this.logos[id].logo) ||
-    //     'http://www.clker.com/cliparts/X/7/N/j/x/Z/blank-shield-soccer.svg';
-    // },
-  },
-  watch: {
-    logos(val) {
-      console.log(val);
-    },
-    logosHaveResolved(val) {
-      console.log(val);
-    },
-  },
 
   methods: {
     getLogoSrc(id) {
       return !this.logosHaveResolved
-        ? 'http://www.clker.com/cliparts/X/7/N/j/x/Z/blank-shield-soccer.svg'
-        : this.logos[id] && this.logos[id].logo || 'http://www.clker.com/cliparts/X/7/N/j/x/Z/blank-shield-soccer.svg';
+        ? this.emptyLogo
+        : this.logos[id] && this.logos[id].logo || this.emptyLogo;
     },
     getTeamsLogos() {
       this.logosHaveResolved = false;
