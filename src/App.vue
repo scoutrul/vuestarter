@@ -18,10 +18,7 @@
 
 <script>
 import { Main, Header, Body, Container } from './components/layout';
-import {
-    LogoHeader,
-    Menu,
-} from './components/blocks';
+import { LogoHeader, Menu } from './components/blocks';
 
 export default {
     name: 'App',
@@ -88,5 +85,4 @@ export default {
 
 <style lang="stylus">
 @import '~@/assets/styles/index.styl';
-
 </style>

@@ -1,8 +1,5 @@
 <template>
-    <div class="container">
-        <h1>Home page</h1>
-
-    </div>
+    <div class="container"><h1>Home page</h1></div>
 </template>
 
 <script>
@@ -11,11 +8,9 @@ import api from '@/services/';
 
 export default {
     data: () => ({
-        leagues: {}
+        leagues: {},
     }),
-    mounted(){
-
-    }
+    mounted() {},
 };
 </script>
 <style></style>

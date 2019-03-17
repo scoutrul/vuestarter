@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Live {{fixtures.results}}</h1>
+    <h1>Live</h1>
     <div>
       <v-layout column v-for="fixture of fixtures" :key="fixture.fixture_id" class="goal--event">
         <v-layout class="goal--center goal--round">{{fixture.round}}</v-layout>
@@ -9,11 +9,7 @@
             <div class="goal--center">
               {{fixture.homeTeam}}
               <br>
-              <img
-                :src="getLogoSrc(fixture.homeTeam_id)"
-                alt
-                height="80px"
-              >
+              <TeamLogo :teamId="fixture.homeTeam_id"/>
             </div>
           </v-flex>
           <v-layout class="goal--center" column>
@@ -27,16 +23,12 @@
             <div class="goal--center">
               {{fixture.awayTeam}}
               <br>
-              <img
-                :src="getLogoSrc(fixture.awayTeam_id)"
-                alt
-                height="80px"
-              >
+              <TeamLogo :teamId="fixture.awayTeam_id"/>
             </div>
           </v-flex>
         </v-layout>
-         <v-layout class="goal--center goal--round">
-            <router-link :to="{ name: 'fixture', params: {id: fixture.fixture_id}}">Статистика матча</router-link>
+        <v-layout class="goal--center goal--round">
+          <router-link :to="{ name: 'fixture', params: {id: fixture.fixture_id}}">Статистика матча</router-link>
         </v-layout>
       </v-layout>
     </div>
@@ -52,56 +44,22 @@ import assignIn from 'lodash/assignIn';
 import find from 'lodash/find';
 import mapKeys from 'lodash/mapKeys';
 
+import { TeamLogo } from '@/components/blocks';
+
 export default {
   data: () => ({
     fixtures: {},
-    logos: {},
-    logosHaveResolved: false,
-    emptyLogo: 'http://clipart-library.com/image_gallery/348752.gif',
   }),
+  components: {
+    TeamLogo
+  },
   mounted() {
-    api
-      .getApi('fixtures/live')
-      .then(res => {
-        this.fixtures = res.body.api.fixtures;
-      })
-      .then(this.getTeamsLogos);
+    api.getApi('fixtures/live').then(res => {
+      this.fixtures = res.body.api.fixtures;
+    });
   },
 
-  methods: {
-    getLogoSrc(id) {
-      return !this.logosHaveResolved
-        ? this.emptyLogo
-        : this.logos[id] && this.logos[id].logo || this.emptyLogo;
-    },
-    getTeamsLogos() {
-      this.logosHaveResolved = false;
-      const logoArr = this.logos;
-      Promise.all([
-        ...map(this.fixtures, async fixture => {
-          await api.getTeamLogo(fixture.homeTeam_id).then(res => {
-            logoArr[fixture.homeTeam_id] =
-              res.body.api.teams[fixture.homeTeam_id];
-          });
-        }),
-        ...map(this.fixtures, async fixture => {
-          await api.getTeamLogo(fixture.homeTeam_id).then(res => {
-            logoArr[fixture.homeTeam_id] =
-              res.body.api.teams[fixture.homeTeam_id];
-          });
-        }),
-      ])
-        .then(res => {
-          console.log('done');
-          console.log(logoArr);
-          this.logos = logoArr;
-          this.logosHaveResolved = true;
-        })
-        .catch(reason => {
-          console.log(reason);
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 <style>

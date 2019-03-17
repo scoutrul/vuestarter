@@ -1,9 +1,5 @@
 <template>
-    <v-flex class="logo">
-        <router-link to="/">
-            logo
-        </router-link>
-    </v-flex>
+    <v-flex class="logo"> <router-link to="/"> logo </router-link> </v-flex>
 </template>
 
 <script>

@@ -28,7 +28,6 @@
                     />
                 </svg>
             </template>
-           
         </router-link>
     </v-flex>
 </template>
