@@ -4,5 +4,14 @@ import LogoHeader from './Logo/LogoHeader';
 import LogoFooter from './Logo/LogoFooter';
 import Copyrights from './Copyrights/Copyrights';
 import TeamLogo from './Team/Logo';
+import TeamVsTeam from './Team/TeamVsTeam';
 
-export { Button, Menu, LogoHeader, Copyrights, LogoFooter, TeamLogo };
+export {
+	Button,
+	Menu,
+	LogoHeader,
+	Copyrights,
+	LogoFooter,
+	TeamLogo,
+	TeamVsTeam,
+};
