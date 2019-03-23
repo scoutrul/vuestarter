@@ -1,21 +1,12 @@
 <template>
   <div class="container">
     <h1 v-if="homeTeam">{{ homeTeam }} - {{ awayTeam }}</h1>
-
        <TeamVsTeam v-for="fixture of fixtures" :key="fixture.fixture_id" :fixture="fixture" />
-
   </div>
 </template>
 
 <script>
 import api from '@/services/';
-import forEach from 'lodash/forEach';
-import map from 'lodash/map';
-import assign from 'lodash/assign';
-import assignIn from 'lodash/assignIn';
-import find from 'lodash/find';
-import mapKeys from 'lodash/mapKeys';
-
 import { TeamLogo, TeamVsTeam } from '@/components/blocks';
 
 export default {

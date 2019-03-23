@@ -13,6 +13,7 @@ const store = new Vuex.Store({
 		teamsCount: 0,
 		leagues: {},
 		leaguesCount: 0,
+		fixtures: {},
 	},
 	getters,
 	mutations,

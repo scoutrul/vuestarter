@@ -9,15 +9,8 @@
 
 <script>
 import api from '@/services/';
-import forEach from 'lodash/forEach';
-import map from 'lodash/map';
-import assign from 'lodash/assign';
-import assignIn from 'lodash/assignIn';
-import find from 'lodash/find';
-import mapKeys from 'lodash/mapKeys';
-
 import { TeamLogo, TeamVsTeam } from '@/components/blocks';
-
+import forEach from 'lodash/forEach';
 export default {
   data: () => ({
     fixtures: {},
@@ -26,7 +19,10 @@ export default {
     TeamLogo,
     TeamVsTeam
   },
-  mounted() {},
+  beforeRouteLeave(to, from, next) {
+      this.$store.state.fixtures = { ...this.$store.state.fixtures, ...this.fixtures }
+      next();
+  },
   beforeRouteEnter(to, from, next) {
     next(vm => {
       api.getApi('fixtures/live').then(res => {

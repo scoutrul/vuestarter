@@ -7,4 +7,7 @@ export default {
 	STORE_LEAGUES: (context, payload) => {
 		context.commit('STORE_LEAGUES', payload);
 	},
+	STORE_FIXTURE: (context, payload) => {
+		context.commit('STORE_FIXTURE', payload);
+	},
 };
