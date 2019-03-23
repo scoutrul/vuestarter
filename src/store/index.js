@@ -8,7 +8,12 @@ import getters from './getters';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-	state: {},
+	state: {
+		teams: {},
+		teamsCount: 0,
+		leagues: {},
+		leaguesCount: 0,
+	},
 	getters,
 	mutations,
 	actions,

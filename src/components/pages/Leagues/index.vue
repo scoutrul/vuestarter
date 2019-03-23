@@ -17,9 +17,8 @@ export default {
         leagues: {},
     }),
     mounted() {
-        api.getApi('leagues').then(res => {
-            console.log(res);
-            this.leagues = res.body.api.leagues;
+        api.getLeagues().then(() => {
+            this.leagues = this.$store.state.leagues;
         });
     },
 };

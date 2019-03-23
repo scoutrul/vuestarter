@@ -1,8 +1,9 @@
 export default {
-	SET_TESTS: (state, payload) => {
-		state.tests = payload;
+	STORE_TEAM: (state, { teamId, team }) => {
+		state.teams[teamId] = team;
 	},
-	ADD_TEST: (state, payload) => {
-		state.tests.push(payload);
+	STORE_LEAGUES: (state, { leagues, results }) => {
+		state.leagues = leagues;
+		state.leaguesCount = results;
 	},
 };

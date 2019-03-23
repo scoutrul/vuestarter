@@ -18,9 +18,9 @@ export default {
     methods: {
         getCurrentLogo(teamId) {
             this.logosHaveResolved = false;
-            api.getTeamLogo(teamId)
-                .then(res => {
-                    this.team = res.body.api.teams[teamId];
+            api.getTeam(teamId)
+                .then(() => {
+                    this.team = this.$store.state.teams[teamId];
                     this.logosHaveResolved = true;
                 })
                 .catch(reason => {

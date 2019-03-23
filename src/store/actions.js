@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 export default {
-	GET_TESTS: async (context, payload) => {
-		context.commit('SET_TESTS', {});
+	STORE_TEAM: (context, payload) => {
+		context.commit('STORE_TEAM', payload);
 	},
-
-	SAVE_TESTS: async (context, payload) => {
-		const { data } = { data: 'localstorage' };
-		context.commit('ADD_TEST', payload);
+	STORE_LEAGUES: (context, payload) => {
+		context.commit('STORE_LEAGUES', payload);
 	},
 };

@@ -5,7 +5,6 @@
         <v-flex class="tvt--center tvt--name" xs5 sm4>{{fixture.homeTeam}}</v-flex>
         <v-layout class="flex tvt--center tvt--title" wrap xs2 sm4>
           <v-flex v-if="isLive" class="tvt--live" xs2>Live!</v-flex>
-          <v-spacer v-else></v-spacer>
           <v-flex class="tvt--round" xs6>{{fixture.round}}</v-flex>
           <v-flex class="tvt--elapsed" xs2>({{fixture.elapsed}} мин.)</v-flex>
         </v-layout>
@@ -31,14 +30,6 @@
 </template>
 
 <script>
-import api from '@/services/';
-import forEach from 'lodash/forEach';
-import map from 'lodash/map';
-import assign from 'lodash/assign';
-import assignIn from 'lodash/assignIn';
-import find from 'lodash/find';
-import mapKeys from 'lodash/mapKeys';
-
 import { TeamLogo } from '@/components/blocks';
 
 export default {
