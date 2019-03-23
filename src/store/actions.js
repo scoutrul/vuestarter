@@ -13,4 +13,7 @@ export default {
 	STORE_LINEUP: (context, payload) => {
 		context.commit('STORE_LINEUP', payload);
 	},
+	STORE_LEAGUE: (context, payload) => {
+		context.commit('STORE_LEAGUE', payload);
+	},
 };

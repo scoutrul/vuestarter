@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import api from '@/services/';
 import { TeamLogo } from '@/components/blocks';
 
 export default {
@@ -38,7 +39,9 @@ export default {
   components: {
     TeamLogo,
   },
-
+created(){
+        api.getLeague(this.fixture.league_id);
+},
   methods: {},
 };
 </script>

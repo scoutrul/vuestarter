@@ -24,7 +24,28 @@ export default {
 				store.commit('STORE_LEAGUES', { leagues, results });
 			});
 	},
+	getLeague(leagueId) {
+		if (!leagueId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.leagues[leagueId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/leagues/league/${leagueId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const league = res.body.api.leagues[leagueId];
+				store.commit('STORE_LEAGUE', {
+					leagueId,
+					league,
+				});
+			});
+	},
 	getTeam(teamId) {
+		if (!teamId) {
+			return new Promise((resolve, reject) => resolve());
+		}
 		if (store.state.teams[teamId]) {
 			return new Promise((resolve, reject) => resolve());
 		}
@@ -68,7 +89,6 @@ export default {
 			.get(`${url}/lineups/${fixtureId}`)
 			.header('X-RapidAPI-Key', token)
 			.then(res => {
-				console.log(res);
 				const lineups = res.body.api.lineUps;
 				store.commit('STORE_LINEUP', { fixtureId, lineups });
 			});
