@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Live</h1>
     <div>
-        <TeamVsTeam v-for="fixture of fixtures" :key="fixture.fixture_id" :fixture="fixture" :hrefStatistic="true" :isLive="true"/>
+        <TeamVsTeam v-for="fixture of orderedFixtures" :key="fixture.fixture_id" :fixture="fixture" :hrefStatistic="true" :isLive="true"/>
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@
 import api from '@/services/';
 import { TeamLogo, TeamVsTeam } from '@/components/blocks';
 import forEach from 'lodash/forEach';
+import sortBy from 'lodash/sortBy';
 export default {
   data: () => ({
     fixtures: {},
@@ -18,6 +19,11 @@ export default {
   components: {
     TeamLogo,
     TeamVsTeam
+  },
+  computed: {
+      orderedFixtures() {
+          return sortBy(this.fixtures, 'elapsed')
+      }
   },
   beforeRouteLeave(to, from, next) {
       this.$store.state.fixtures = { ...this.$store.state.fixtures, ...this.fixtures }

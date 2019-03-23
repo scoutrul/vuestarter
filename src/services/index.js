@@ -57,4 +57,20 @@ export default {
 				});
 			});
 	},
+	getLineUp(fixtureId) {
+		if (!fixtureId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.lineups[fixtureId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/lineups/${fixtureId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				console.log(res);
+				const lineups = res.body.api.lineUps;
+				store.commit('STORE_LINEUP', { fixtureId, lineups });
+			});
+	},
 };

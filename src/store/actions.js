@@ -10,4 +10,7 @@ export default {
 	STORE_FIXTURE: (context, payload) => {
 		context.commit('STORE_FIXTURE', payload);
 	},
+	STORE_LINEUP: (context, payload) => {
+		context.commit('STORE_LINEUP', payload);
+	},
 };

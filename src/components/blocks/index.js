@@ -5,6 +5,7 @@ import LogoFooter from './Logo/LogoFooter';
 import Copyrights from './Copyrights/Copyrights';
 import TeamLogo from './Team/Logo';
 import TeamVsTeam from './Team/TeamVsTeam';
+import lineUp from './Team/lineUp';
 
 export {
 	Button,
@@ -14,4 +15,5 @@ export {
 	LogoFooter,
 	TeamLogo,
 	TeamVsTeam,
+	lineUp,
 };
