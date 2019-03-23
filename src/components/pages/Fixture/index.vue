@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="$store.state.fixtures[fixture_mainId]">
     <h1 v-if="homeTeam">{{ homeTeam }} - {{ awayTeam }}</h1>
-       <TeamVsTeam v-for="fixture of fixtures" :key="fixture.fixture_id" :fixture="fixture" />
+    <TeamVsTeam :fixture="$store.state.fixtures[fixture_mainId]" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import { TeamLogo, TeamVsTeam } from '@/components/blocks';
 export default {
   data: () => ({
     fixtures: {},
-    fixture_id: null,
+    fixture_mainId: null,
     homeTeam: '',
     awayTeam: '',
   }),
@@ -21,18 +21,12 @@ export default {
     TeamVsTeam
   },
   mounted() {
-    
+    const fixture_mainId = this.$store.state.route.params.id;
+    api.getFixture(fixture_mainId).then(() => {
+        this.fixture_mainId = fixture_mainId;
+    });
   },
-  beforeRouteEnter(to, from, next){
-      next(vm => { 
-            const fixture_id = vm.$store.state.route.params.id;
-            api.getApi(`fixtures/id/${fixture_id}`).then(res => {
-            vm.fixtures = res.body.api.fixtures;
-            vm.homeTeam = vm.fixtures[fixture_id].homeTeam;
-            vm.awayTeam = vm.fixtures[fixture_id].awayTeam;
-        });
-    })
-  }
+
 };
 </script>
 <style>

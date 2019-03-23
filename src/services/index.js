@@ -40,6 +40,9 @@ export default {
 			});
 	},
 	getFixture(fixtureId) {
+		if (!fixtureId) {
+			return new Promise((resolve, reject) => resolve());
+		}
 		if (store.state.fixtures[fixtureId]) {
 			return new Promise((resolve, reject) => resolve());
 		}
