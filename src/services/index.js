@@ -1,3 +1,4 @@
+import get from 'lodash/get';
 import unirest from 'unirest';
 import store from '../store';
 
@@ -10,6 +11,25 @@ export default {
 			.get(`${url}/${path}`)
 			.header('X-RapidAPI-Key', token)
 			.then(res => res);
+	},
+	apiService(entityId, path) {
+		if (!entityId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.leagues[entityId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/${path}/${entityId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const entities = 'leagues';
+				const league = get(`res.body.api.${entities}[${entityId}]`, {});
+				store.commit('STORE_LEAGUE', {
+					entityId,
+					league,
+				});
+			});
 	},
 	getLeagues(path = 'leagues') {
 		if (store.state.leaguesCount) {
