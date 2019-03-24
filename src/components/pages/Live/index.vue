@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <h1>Live</h1>
-    <div>
+    <v-layout row wrap>
         <TeamVsTeam v-for="fixture of orderedFixtures" :key="fixture.fixture_id" :fixture="fixture" :hrefStatistic="true" :isLive="true"/>
-    </div>
+    </v-layout>
   </div>
 </template>
 

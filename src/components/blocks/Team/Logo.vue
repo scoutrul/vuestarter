@@ -1,5 +1,5 @@
 <template>
-    <img :src="logosHaveResolved ? team.logo || defaultLogo : defaultLogo" :alt="logosHaveResolved ? team.name : 'the team logotype'" height="80px" />
+    <img :src="logosHaveResolved ? team.logo || defaultLogo : defaultLogo" :alt="logosHaveResolved ? team.name : 'the team logotype'" />
 </template>
 
 <script>
