@@ -9,14 +9,14 @@
       <v-flex
         v-for="player in orderedPlayersstartXI"
         :key="player.player"
-      >{{player.player}} ({{player.number}})</v-flex>
+      >{{player.number ? player.number+'. ' : ''}}{{player.player}} </v-flex>
     </v-layout>
     <v-layout column>
       <h3>Замена:</h3>
       <v-flex
         v-for="player in orderedPlayerssubstitutes"
         :key="player.player"
-      >{{player.player}} ({{player.number}})</v-flex>
+      >{{player.number ? player.number+'. ' : ''}}{{player.player}} </v-flex>
     </v-layout>
   </v-layout>
 </template>
@@ -28,10 +28,10 @@ export default {
   methods: {},
   computed: {
     orderedPlayersstartXI() {
-      return sortBy(this.team.startXI, 'player');
+      return sortBy(this.team.startXI, 'number');
     },
     orderedPlayerssubstitutes() {
-      return sortBy(this.team.substitutes, 'player');
+      return sortBy(this.team.substitutes, 'number');
     },
   },
 };
