@@ -4,6 +4,7 @@
     <v-layout row wrap>
         <TeamVsTeam v-for="fixture of orderedFixtures" :key="fixture.fixture_id" :fixture="fixture" :hrefStatistic="true" :isLive="true"/>
     </v-layout>
+    <v-layout fill-height></v-layout>
   </div>
 </template>
 

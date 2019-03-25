@@ -1,6 +1,6 @@
 <template>
-  <v-layout column class="tvt--event flex" xs12 sm4 md3 xl2>
-    <v-layout justify-center>
+  <v-layout column class="tvt--event flex" xs12 sm4 md3 lg3 xl2>
+    <v-layout justify-center align-center>
       <v-flex v-if="countryFlag" class="tvt--nogrow">
         <img
           :src="countryFlag"
@@ -28,7 +28,7 @@
         <TeamLogo :teamId="fixture.awayTeam_id"/>
       </v-flex>
     </v-layout>
-    <v-layout class="tvt--statistic">
+    <v-layout class="tvt--statistic" v-if="hrefStatistic">
       <router-link
         :to="{ name: 'fixture', params: {id: fixture.fixture_id}}"
         class="tvt--statistic__link"
@@ -62,7 +62,6 @@ export default {
   outline: #fff solid 1px;
   background-color: #dfe2e2;
   padding: 20px;
-  min-height: 100px;
 }
 .tvt--logo {
   display: flex;
@@ -70,7 +69,7 @@ export default {
   align-content: center;
   img {
     max-width: 100%;
-    max-height: 100px;
+    max-height: 60px;
   }
 }
 .tvt--nogrow {

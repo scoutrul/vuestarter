@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 export default {
 	STORE_TEAM: (context, payload) => {
 		context.commit('STORE_TEAM', payload);
@@ -15,5 +13,8 @@ export default {
 	},
 	STORE_LEAGUE: (context, payload) => {
 		context.commit('STORE_LEAGUE', payload);
+	},
+	STORE_EVENTS: (context, payload) => {
+		context.commit('STORE_EVENTS', payload);
 	},
 };

@@ -113,4 +113,19 @@ export default {
 				store.commit('STORE_LINEUP', { fixtureId, lineups });
 			});
 	},
+	getEvents(fixtureId) {
+		if (!fixtureId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.events[fixtureId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/events/${fixtureId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const events = res.body.api.events;
+				store.commit('STORE_EVENTS', { fixtureId, events });
+			});
+	},
 };

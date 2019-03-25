@@ -15,4 +15,7 @@ export default {
 		state.leagues = leagues;
 		state.leaguesCount = results;
 	},
+	STORE_EVENTS: (state, { fixtureId, events }) => {
+		state.events[fixtureId] = [...events];
+	},
 };
