@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import sortBy from 'lodash/sortBy';
 export default {
   props: ['events'],
   methods: {},

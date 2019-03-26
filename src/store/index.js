@@ -16,6 +16,7 @@ const store = new Vuex.Store({
 		fixtures: {},
 		lineups: {},
 		events: {},
+		statistics: {},
 	},
 	getters,
 	mutations,

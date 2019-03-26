@@ -18,4 +18,7 @@ export default {
 	STORE_EVENTS: (state, { fixtureId, events }) => {
 		state.events[fixtureId] = [...events];
 	},
+	STORE_STATISTICS: (state, { fixtureId, statistics }) => {
+		state.statistics[fixtureId] = { ...statistics };
+	},
 };

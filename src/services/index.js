@@ -128,4 +128,19 @@ export default {
 				store.commit('STORE_EVENTS', { fixtureId, events });
 			});
 	},
+	getStatistics(fixtureId) {
+		if (!fixtureId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.events[fixtureId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/statistics/fixture/${fixtureId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const statistics = res.body.api.statistics;
+				store.commit('STORE_STATISTICS', { fixtureId, statistics });
+			});
+	},
 };

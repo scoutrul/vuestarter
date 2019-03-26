@@ -14,9 +14,15 @@
     </v-layout>
     <h1>{{ $store.state.fixtures[fixtureId].homeTeam }} - {{ $store.state.fixtures[fixtureId].awayTeam }}</h1>
     <TeamVsTeam :fixture="$store.state.fixtures[fixtureId]"/>
+    <hr />
     <v-layout>
         <Events :events="events" />
     </v-layout>
+    <hr />
+    <v-layout>
+        <Statistics :statistics="statistics" />
+    </v-layout>
+    <hr />
     <v-layout v-if="homeLine">
       <LineUp :team="homeLine"/>
       <LineUp :team="awayLine"/>
@@ -27,7 +33,7 @@
 
 <script>
 import api from '@/services/';
-import { TeamLogo, TeamVsTeam, LineUp, Events } from '@/components/blocks';
+import { TeamLogo, TeamVsTeam, LineUp, Events, Statistics } from '@/components/blocks';
 import values from 'lodash/values';
 
 export default {
@@ -39,12 +45,14 @@ export default {
     league: {},
     leagueId: 0,
     events: [],
+    statistics: {},
   }),
   components: {
     TeamLogo,
     TeamVsTeam,
     LineUp,
-    Events
+    Events,
+    Statistics
   },
   created() {
     const fixtureId = this.$store.state.route.params.id;
@@ -57,6 +65,9 @@ export default {
       });
       api.getEvents(fixtureId).then(() => {
           this.events = this.$store.state.events[fixtureId];
+      });
+      api.getStatistics(fixtureId).then(() => {
+          this.statistics = this.$store.state.statistics[fixtureId];
       });
     });
     if (this.$store.state.fixtures[fixtureId]) {

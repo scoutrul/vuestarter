@@ -17,4 +17,7 @@ export default {
 	STORE_EVENTS: (context, payload) => {
 		context.commit('STORE_EVENTS', payload);
 	},
+	STORE_STATISTICS: (context, payload) => {
+		context.commit('STORE_STATISTICS', payload);
+	},
 };
