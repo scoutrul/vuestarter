@@ -31,37 +31,6 @@ export default {
 				});
 			});
 	},
-	getLeagues(path = 'leagues') {
-		if (store.state.leaguesCount) {
-			return new Promise((resolve, reject) => resolve());
-		}
-		return unirest
-			.get(`${url}/${path}`)
-			.header('X-RapidAPI-Key', token)
-			.then(res => {
-				console.log('api results', res);
-				const { leagues, results } = res.body.api;
-				store.commit('STORE_LEAGUES', { leagues, results });
-			});
-	},
-	getLeague(leagueId) {
-		if (!leagueId) {
-			return new Promise((resolve, reject) => resolve());
-		}
-		if (store.state.leagues[leagueId]) {
-			return new Promise((resolve, reject) => resolve());
-		}
-		return unirest
-			.get(`${url}/leagues/league/${leagueId}`)
-			.header('X-RapidAPI-Key', token)
-			.then(res => {
-				const league = res.body.api.leagues[leagueId];
-				store.commit('STORE_LEAGUE', {
-					leagueId,
-					league,
-				});
-			});
-	},
 	getTeam(teamId) {
 		if (!teamId) {
 			return new Promise((resolve, reject) => resolve());
@@ -141,6 +110,51 @@ export default {
 			.then(res => {
 				const statistics = res.body.api.statistics;
 				store.commit('STORE_STATISTICS', { fixtureId, statistics });
+			});
+	},
+	getLeagues(path = 'leagues') {
+		if (store.state.leaguesCount) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/${path}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const { leagues, results } = res.body.api;
+				store.commit('STORE_LEAGUES', { leagues, results });
+			});
+	},
+	getLeague(leagueId) {
+		if (!leagueId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.leagues[leagueId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/leagues/league/${leagueId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const league = res.body.api.leagues[leagueId];
+				store.commit('STORE_LEAGUE', {
+					leagueId,
+					league,
+				});
+			});
+	},
+	getLeagueTable(leagueId) {
+		if (!leagueId) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		if (store.state.leagueTables[leagueId]) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/leagueTable/${leagueId}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const table = res.body.api.standings[0];
+				store.commit('STORE_LEAGUE_TABLE', { leagueId, table });
 			});
 	},
 };

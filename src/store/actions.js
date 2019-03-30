@@ -20,4 +20,7 @@ export default {
 	STORE_STATISTICS: (context, payload) => {
 		context.commit('STORE_STATISTICS', payload);
 	},
+	STORE_LEAGUE_TABLE: (context, payload) => {
+		context.commit('STORE_LEAGUE_TABLE', payload);
+	},
 };

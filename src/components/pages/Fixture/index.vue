@@ -1,25 +1,14 @@
 <template>
   <div class="container" v-if="$store.state.fixtures[fixtureId]">
-    <v-layout column>
-      <v-flex>
-        <img v-if="league.logo" :src="league.logo" height="80px">
-        <img v-if="league.flag" :src="league.flag" height="80px">
-      </v-flex>
-      <v-flex>{{league.name}}</v-flex>
-      <v-flex>Сезон: {{league.season}}</v-flex>
-      <v-flex>
-        Длительность цикла: {{league.season_start}} -
-        {{league.season_end}}
-      </v-flex>
-    </v-layout>
+    <LeagueInfo :leagueId="$store.state.fixtures[fixtureId].league_id"/>
     <h1>{{ $store.state.fixtures[fixtureId].homeTeam }} - {{ $store.state.fixtures[fixtureId].awayTeam }}</h1>
     <TeamVsTeam :fixture="$store.state.fixtures[fixtureId]"/>
     <hr />
-    <v-layout>
+    <v-layout v-if="events">
         <Events :events="events" />
     </v-layout>
     <hr />
-    <v-layout>
+    <v-layout v-if="statistics">
         <Statistics :statistics="statistics" />
     </v-layout>
     <hr />
@@ -33,7 +22,7 @@
 
 <script>
 import api from '@/services/';
-import { TeamLogo, TeamVsTeam, LineUp, Events, Statistics } from '@/components/blocks';
+import { TeamLogo, TeamVsTeam, LineUp, Events, Statistics, LeagueInfo } from '@/components/blocks';
 import values from 'lodash/values';
 
 export default {
@@ -52,12 +41,13 @@ export default {
     TeamVsTeam,
     LineUp,
     Events,
-    Statistics
+    Statistics,
+    LeagueInfo
   },
   created() {
     const fixtureId = this.$store.state.route.params.id;
+    this.fixtureId = fixtureId;
     api.getFixture(fixtureId).then(() => {
-      this.fixtureId = fixtureId;
       api.getLineUp(fixtureId).then(() => {
         this.lineups = this.$store.state.lineups[fixtureId];
         this.homeLine = this.lineups[Object.keys(this.lineups)[0]];
@@ -70,14 +60,6 @@ export default {
           this.statistics = this.$store.state.statistics[fixtureId];
       });
     });
-    if (this.$store.state.fixtures[fixtureId]) {
-      api
-        .getLeague(this.$store.state.fixtures[fixtureId].league_id)
-        .then(() => {
-          this.leagueId = this.$store.state.fixtures[fixtureId].league_id;
-          this.league = this.$store.state.leagues[this.leagueId];
-        });
-    }
   },
   mounted() {},
 };

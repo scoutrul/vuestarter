@@ -8,6 +8,7 @@ import TeamVsTeam from './Team/TeamVsTeam';
 import LineUp from './Team/LineUp';
 import Events from './Team/Events';
 import Statistics from './Team/Statistics';
+import LeagueInfo from './League/LeagueInfo';
 
 export {
 	Button,
@@ -19,5 +20,7 @@ export {
 	TeamVsTeam,
 	LineUp,
 	Events,
-	Statistics
+	Statistics,
+	LeagueInfo,
+
 };

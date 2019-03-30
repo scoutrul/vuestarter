@@ -1,5 +1,5 @@
 <template>
-    <img :src="logosHaveResolved ? team.logo || defaultLogo : defaultLogo" :alt="logosHaveResolved ? team.name : 'the team logotype'" />
+    <img class="logo" :src="logosHaveResolved ? team.logo || defaultLogo : defaultLogo" :alt="logosHaveResolved ? team.name : 'the team logotype'" />
 </template>
 
 <script>
@@ -30,3 +30,8 @@ export default {
     },
 };
 </script>
+<style>
+.logo {
+    object-fit: contain;
+}
+</style>

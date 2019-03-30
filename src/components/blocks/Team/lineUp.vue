@@ -1,17 +1,17 @@
 <template>
   <v-layout column v-if="team">
-    <v-layout column>
+    <v-layout column v-if="team.coach">
       <h3>Тренер:</h3>
       {{team.coach}}
     </v-layout>
-    <v-layout column>
+    <v-layout column v-if="orderedPlayersstartXI.length">
       <h3>Основа:</h3>
       <v-flex
         v-for="player in orderedPlayersstartXI"
         :key="player.player"
       >{{player.number ? player.number+'. ' : ''}}{{player.player}} </v-flex>
     </v-layout>
-    <v-layout column>
+    <v-layout column v-if="orderedPlayerssubstitutes.length">
       <h3>Замена:</h3>
       <v-flex
         v-for="player in orderedPlayerssubstitutes"

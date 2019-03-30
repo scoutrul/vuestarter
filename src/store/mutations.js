@@ -21,4 +21,7 @@ export default {
 	STORE_STATISTICS: (state, { fixtureId, statistics }) => {
 		state.statistics[fixtureId] = { ...statistics };
 	},
+	STORE_LEAGUE_TABLE: (state, { leagueId, table }) => {
+		state.leagueTables[leagueId] = table;
+	},
 };
