@@ -4,14 +4,14 @@
       <h3>Тренер:</h3>
       {{team.coach}}
     </v-layout>
-    <v-layout column v-if="orderedPlayersstartXI.length">
+    <v-layout column v-if="team.startXI">
       <h3>Основа:</h3>
       <v-flex
         v-for="player in orderedPlayersstartXI"
         :key="player.player"
       >{{player.number ? player.number+'. ' : ''}}{{player.player}} </v-flex>
     </v-layout>
-    <v-layout column v-if="orderedPlayerssubstitutes.length">
+    <v-layout column v-if="team.substitutes">
       <h3>Замена:</h3>
       <v-flex
         v-for="player in orderedPlayerssubstitutes"

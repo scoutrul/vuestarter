@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="$store.state.fixtures[fixtureId]">
+  <div class="container" v-if="resolved">
     <LeagueInfo :leagueId="$store.state.fixtures[fixtureId].league_id"/>
     <h1>{{ $store.state.fixtures[fixtureId].homeTeam }} - {{ $store.state.fixtures[fixtureId].awayTeam }}</h1>
     <TeamVsTeam :fixture="$store.state.fixtures[fixtureId]"/>
@@ -23,7 +23,6 @@
 <script>
 import api from '@/services/';
 import { TeamLogo, TeamVsTeam, LineUp, Events, Statistics, LeagueInfo } from '@/components/blocks';
-import values from 'lodash/values';
 
 export default {
   data: () => ({
@@ -32,9 +31,10 @@ export default {
     homeLine: null,
     awayLine: {},
     league: {},
-    leagueId: 0,
+    leagueId: null,
     events: [],
     statistics: {},
+      resolved: false,
   }),
   components: {
     TeamLogo,
@@ -49,7 +49,8 @@ export default {
     this.fixtureId = fixtureId;
     api.getFixture(fixtureId).then(() => {
       api.getLineUp(fixtureId).then(() => {
-        this.lineups = this.$store.state.lineups[fixtureId];
+
+          this.lineups = this.$store.state.lineups[fixtureId];
         this.homeLine = this.lineups[Object.keys(this.lineups)[0]];
         this.awayLine = this.lineups[Object.keys(this.lineups)[1]];
       });
@@ -59,9 +60,10 @@ export default {
       api.getStatistics(fixtureId).then(() => {
           this.statistics = this.$store.state.statistics[fixtureId];
       });
+      this.resolved = true;
     });
   },
-  mounted() {},
+
 };
 </script>
 <style>
