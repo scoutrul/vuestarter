@@ -1,13 +1,16 @@
 <template>
     <div class="container">
         <h1>Leagues</h1>
-        <div v-for="league of leagues" :key="league.league_id" >
-            <router-link :to="{ 
-                name: 'league', 
-                params: {
-                        id: league.league_id
-                    }, 
-                path: `/leagues/${league.league_id}`}">
+        <div v-for="league of leagues" :key="league.league_id">
+            <router-link
+                :to="{
+                    name: 'league',
+                    params: {
+                        id: league.league_id,
+                    },
+                    path: `/leagues/${league.league_id}`,
+                }"
+            >
                 {{ league.name }}
             </router-link>
         </div>

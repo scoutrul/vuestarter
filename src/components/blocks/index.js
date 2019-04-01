@@ -22,5 +22,4 @@ export {
 	Events,
 	Statistics,
 	LeagueInfo,
-
 };

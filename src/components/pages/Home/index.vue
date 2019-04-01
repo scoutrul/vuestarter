@@ -7,7 +7,7 @@
                 - TvT stats
 
             </pre>
-        </v-layout>    
+        </v-layout>
     </div>
 </template>
 

@@ -167,15 +167,14 @@ export default {
 			.header('X-RapidAPI-Key', token)
 			.then(res => {
 				const fixtures = res.body.api.fixtures;
-				each(fixtures, fixture => {
+				return each(fixtures, fixture => {
 					const fixtureId = fixture.fixture_id;
 					store.commit('STORE_FIXTURE', {
 						fixtureId,
 						fixture,
 					});
+					return fixture;
 				});
 			});
 	},
-
-
 };

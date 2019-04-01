@@ -1,5 +1,11 @@
 <template>
-    <img v-if="resolved" class="logo" :src="team.logo || defaultLogo" :alt="team.name" :title="team.name" />
+    <img
+        v-if="resolved"
+        class="logo"
+        :src="team.logo || defaultLogo"
+        :alt="team.name"
+        :title="team.name"
+    />
     <img v-else class="logo" :src="defaultLogo" alt="" title="" />
 </template>
 
@@ -13,8 +19,8 @@ export default {
         team: null,
         resolved: false,
     }),
-    mounted(){
-        this.getCurrentLogo(this.teamId)
+    mounted() {
+        this.getCurrentLogo(this.teamId);
     },
     methods: {
         getCurrentLogo(teamId) {

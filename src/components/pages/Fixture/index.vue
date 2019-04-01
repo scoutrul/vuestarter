@@ -16,12 +16,17 @@
             <LineUp :team="homeLine"/>
             <LineUp :team="awayLine"/>
         </v-layout>
+        <h2>Другие встречи</h2>
+        <v-layout row wrap>
+            <TeamVsTeam v-for="fixture of H2H" :fixture="$store.state.fixtures[fixture.fixture_id]" :stats="true" :hrefStatistic="true"/>
+        </v-layout>
         <v-layout fill-height></v-layout>
     </div>
 </template>
 
 <script>
     import api from '@/services/';
+    import filter from 'lodash/filter';
     import { TeamLogo, TeamVsTeam, LineUp, Events, Statistics, LeagueInfo } from '@/components/blocks';
 
     export default {
@@ -35,6 +40,7 @@
             events: [],
             statistics: {},
             resolved: false,
+            H2H: [],
         }),
         components: {
             TeamLogo,
@@ -59,9 +65,14 @@
                 api.getStatistics(fixtureId).then(() => {
                     this.statistics = this.$store.state.statistics[fixtureId];
                 });
-                this.resolved = true;
 
-                api.getH2H(this.$store.state.fixtures[fixtureId].homeTeam_id, this.$store.state.fixtures[fixtureId].awayTeam_id);
+
+                api.getH2H(this.$store.state.fixtures[fixtureId].homeTeam_id, this.$store.state.fixtures[fixtureId].awayTeam_id).then(res => {
+                    this.H2H = filter(res, (fixture, key) => {
+                        return fixture.fixture_id != fixtureId && fixture;
+                    });
+                    this.resolved = true;
+                });
             });
         },
 
