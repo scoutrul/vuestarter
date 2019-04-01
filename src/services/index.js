@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import unirest from 'unirest';
+import each from 'lodash/each';
 import store from '../store';
 
 const url = 'https://api-football-v1.p.rapidapi.com';
@@ -157,4 +158,24 @@ export default {
 				store.commit('STORE_LEAGUE_TABLE', { leagueId, table });
 			});
 	},
+	getH2H(teamId_1, teamId_2) {
+		if (!teamId_1 || !teamId_2) {
+			return new Promise((resolve, reject) => resolve());
+		}
+		return unirest
+			.get(`${url}/fixtures/h2h/${teamId_1}/${teamId_2}`)
+			.header('X-RapidAPI-Key', token)
+			.then(res => {
+				const fixtures = res.body.api.fixtures;
+				each(fixtures, fixture => {
+					const fixtureId = fixture.fixture_id;
+					store.commit('STORE_FIXTURE', {
+						fixtureId,
+						fixture,
+					});
+				});
+			});
+	},
+
+
 };

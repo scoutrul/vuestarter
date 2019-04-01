@@ -19,13 +19,19 @@
     </v-layout>
     <v-layout class="tvt--header">
       <v-flex class="tvt--center tvt--logo" xs4>
-        <TeamLogo :teamId="fixture.homeTeam_id"/>
+          <router-link v-if="teams"
+                       :to="{ name: 'team', params: {id: fixture.homeTeam_id}}"
+          ><TeamLogo :teamId="fixture.homeTeam_id"/></router-link>
+        <TeamLogo v-else :teamId="fixture.homeTeam_id"/>
       </v-flex>
       <v-layout class="flex tvt--center" xs4 sm4 column>
         <v-flex class="tvt--center tvt--score">{{fixture.goalsHomeTeam}} - {{fixture.goalsAwayTeam}}</v-flex>
       </v-layout>
       <v-flex class="tvt--center tvt--logo" xs4>
-        <TeamLogo :teamId="fixture.awayTeam_id"/>
+          <router-link v-if="teams"
+              :to="{ name: 'team', params: {id: fixture.awayTeam_id}}"
+              ><TeamLogo :teamId="fixture.awayTeam_id"/></router-link>
+        <TeamLogo v-else :teamId="fixture.awayTeam_id"/>
       </v-flex>
     </v-layout>
     <v-layout class="tvt--statistic" v-if="hrefStatistic">
@@ -42,7 +48,7 @@ import api from '@/services/';
 import { TeamLogo } from '@/components/blocks';
 
 export default {
-  props: ['fixture', 'hrefStatistic', 'isLive'],
+  props: ['fixture', 'hrefStatistic', 'isLive', 'teams'],
   data: () => ({
     countryFlag: null,
   }),
