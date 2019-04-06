@@ -1,25 +1,22 @@
-import Button from './Button/Button';
 import Menu from './Menu/Menu';
 import LogoHeader from './Logo/LogoHeader';
-import LogoFooter from './Logo/LogoFooter';
-import Copyrights from './Copyrights/Copyrights';
 import TeamLogo from './Team/Logo';
 import TeamVsTeam from './Team/TeamVsTeam';
 import LineUp from './Team/LineUp';
 import Events from './Team/Events';
 import Statistics from './Team/Statistics';
+import CountryFlag from './Team/CountryFlag';
 import LeagueInfo from './League/LeagueInfo';
 
+
 export {
-	Button,
 	Menu,
 	LogoHeader,
-	Copyrights,
-	LogoFooter,
 	TeamLogo,
 	TeamVsTeam,
 	LineUp,
 	Events,
 	Statistics,
 	LeagueInfo,
+	CountryFlag,
 };

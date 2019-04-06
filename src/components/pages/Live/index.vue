@@ -8,6 +8,7 @@
                 :fixture="fixture"
                 :href-statistic="true"
                 :is-live="true"
+                :hrefTeams="false"
             />
         </v-layout>
         <v-layout fill-height></v-layout>
@@ -17,7 +18,6 @@
 <script>
 import api from '@/services/';
 import { TeamLogo, TeamVsTeam } from '@/components/blocks';
-import forEach from 'lodash/forEach';
 import sortBy from 'lodash/sortBy';
 
 export default {

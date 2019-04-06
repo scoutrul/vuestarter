@@ -2,7 +2,7 @@
     <div class="container" v-if="resolved">
         <LeagueInfo :leagueId="$store.state.fixtures[fixtureId].league_id"/>
         <h1>{{ $store.state.fixtures[fixtureId].homeTeam }} - {{ $store.state.fixtures[fixtureId].awayTeam }}</h1>
-        <TeamVsTeam :fixture="$store.state.fixtures[fixtureId]" :teams="true"/>
+        <TeamVsTeam :fixture="$store.state.fixtures[fixtureId]" :hrefTeams="true"/>
         <hr/>
         <v-layout v-if="events">
             <Events :events="events"/>

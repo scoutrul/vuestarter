@@ -1,12 +1,17 @@
 <template>
-    <v-layout column class="tvt--event flex" xs12 sm4 md3 lg3 xl2 v-if="fixture && resolve">
+    <v-layout
+        column
+        class="tvt--event flex"
+        xs12
+        sm4
+        md3
+        lg3
+        xl2
+        v-if="fixture"
+    >
         <v-layout justify-center align-center>
-            <v-flex v-if="countryFlag" class="tvt--nogrow">
-                <img
-                    :src="countryFlag"
-                    height="14px"
-                    :alt="$store.state.leagues[fixture.league_id].country"
-                />
+            <v-flex class="tvt--nogrow">
+                <CountryFlag :league_id="fixture.league_id" />
             </v-flex>
             <v-flex class="tvt--center tvt--title tvt--round tvt--nogrow">{{
                 fixture.round
@@ -15,20 +20,30 @@
         </v-layout>
 
         <v-layout class="tvt--header">
-            <v-flex class="tvt--center tvt--name" xs4>{{
-                fixture.homeTeam
-            }}</v-flex>
+            <v-flex class="tvt--center tvt--name" xs4>
+                <router-link
+                    v-if="hrefTeams"
+                    :to="{ name: 'team', params: { id: fixture.homeTeam_id } }"
+                    >{{ fixture.homeTeam }}
+                </router-link>
+                <div v-else>{{ fixture.homeTeam }}</div>
+            </v-flex>
             <v-flex class="tvt--center tvt--elapsed" xs4
                 >({{ fixture.elapsed }} мин.)</v-flex
             >
-            <v-flex class="tvt--center tvt--name" xs4>{{
-                fixture.awayTeam
-            }}</v-flex>
+            <v-flex class="tvt--center tvt--name" xs4>
+                <router-link
+                    v-if="hrefTeams"
+                    :to="{ name: 'team', params: { id: fixture.awayTeam_id } }"
+                    >{{ fixture.awayTeam }}</router-link
+                >
+                <div v-else>{{ fixture.awayTeam }}</div>
+            </v-flex>
         </v-layout>
         <v-layout class="tvt--header">
             <v-flex class="tvt--center tvt--logo" xs4>
                 <router-link
-                    v-if="teams"
+                    v-if="hrefTeams"
                     :to="{ name: 'team', params: { id: fixture.homeTeam_id } }"
                     ><TeamLogo :team-id="fixture.homeTeam_id"
                 /></router-link>
@@ -42,7 +57,7 @@
             </v-layout>
             <v-flex class="tvt--center tvt--logo" xs4>
                 <router-link
-                    v-if="teams"
+                    v-if="hrefTeams"
                     :to="{ name: 'team', params: { id: fixture.awayTeam_id } }"
                     ><TeamLogo :team-id="fixture.awayTeam_id"
                 /></router-link>
@@ -60,26 +75,19 @@
 </template>
 
 <script>
-import api from '@/services/';
-import { TeamLogo } from '@/components/blocks';
+import TeamLogo from './Logo';
+import CountryFlag from './CountryFlag';
 
 export default {
     components: {
         TeamLogo,
+        CountryFlag,
     },
-    props: ['fixture', 'hrefStatistic', 'isLive', 'teams'],
+    props: ['fixture', 'hrefStatistic', 'isLive', 'hrefTeams'],
     data: () => ({
-        countryFlag: null,
         resolve: false,
     }),
-    created() {
-        this.fixture && api.getLeague(this.fixture.league_id).then(() => {
-            this.countryFlag = this.$store.state.leagues[
-                this.fixture.league_id
-            ].flag;
-            this.resolve = true;
-        });
-    },
+    created() {},
     methods: {},
 };
 </script>

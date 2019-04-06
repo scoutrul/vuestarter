@@ -9,7 +9,7 @@
             <v-flex xs1> Очки</v-flex>
             <v-flex xs1> Позиция</v-flex>
         </v-layout>
-        <v-layout v-for="team in table" :key="team.team_id">
+        <v-layout v-for="(team, i) in table" :key="team.team_id + i">
             <v-flex xs1>
                 <TeamLogo
                     :teamId="team.team_id"
