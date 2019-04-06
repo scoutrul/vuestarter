@@ -7,7 +7,7 @@
                 :key="fixture.fixture_id"
                 :fixture="fixture"
                 :href-statistic="true"
-                :live="isItLive(fixture.elapsed)"
+                :live="true"
                 :hrefTeams="false"
             />
         </v-layout>
@@ -18,7 +18,7 @@
                 :key="fixture.fixture_id"
                 :fixture="fixture"
                 :href-statistic="true"
-                :live="isItLive(fixture.elapsed)"
+                :live="false"
                 :hrefTeams="false"
             />
         </v-layout>
@@ -58,16 +58,17 @@ export default {
         next();
     },
     beforeRouteEnter(to, from, next) {
-        next(vm => {
-            api.getLiveFixtures().then(res => {
+        next(async vm => {
+            await api.getLeagues();
+            await api.getLiveFixtures().then(res => {
                 vm.liveFixtures = vm.$store.state.liveFixtures;
             });
         });
     },
     mounted(){
         api.getTodayFixtures().then(res => {
-                this.todayFixtures = this.$store.state.todayFixtures;
-            });
+            this.todayFixtures = this.$store.state.todayFixtures;
+        });
     },
     methods: {
         isItLive(elapsed) {

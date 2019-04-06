@@ -10,8 +10,8 @@
         v-if="fixture"
     >
         <v-layout justify-center align-center>
-            <v-flex class="tvt--nogrow"  v-if="live">
-                <CountryFlag :league_id="fixture.league_id" />
+            <v-flex class="tvt--nogrow">
+                <CountryFlag :league_id="fixture.league_id"  v-if="live"/>
             </v-flex>
             <v-flex class="tvt--center tvt--title tvt--round tvt--nogrow">{{
                 fixture.round
@@ -28,9 +28,10 @@
                 </router-link>
                 <div v-else>{{ fixture.homeTeam }}</div>
             </v-flex>
-            <v-flex class="tvt--center tvt--elapsed" xs4
+            <v-flex class="tvt--center tvt--elapsed" xs4  v-if="live"
                 >({{ fixture.elapsed }} мин.)</v-flex
             >
+            <v-spacer v-else></v-spacer>
             <v-flex class="tvt--center tvt--name" xs4>
                 <router-link
                     v-if="hrefTeams"
@@ -40,31 +41,31 @@
                 <div v-else>{{ fixture.awayTeam }}</div>
             </v-flex>
         </v-layout>
-        <v-layout class="tvt--header">
-            <v-flex class="tvt--center tvt--logo" xs4 v-if="live">
+        <v-layout class="tvt--header" v-if="isInLiveTable()">
+            <v-flex class="tvt--center tvt--logo" xs4>
                 <router-link
                     v-if="hrefTeams"
                     :to="{ name: 'team', params: { id: fixture.homeTeam_id } }"
                     ><TeamLogo :team-id="fixture.homeTeam_id"
                 /></router-link>
-                <TeamLogo v-else :team-id="fixture.homeTeam_id" />
+                <TeamLogo :team-id="fixture.homeTeam_id" />
             </v-flex>
             <v-layout class="flex tvt--center" xs4 sm4 column>
-                <v-flex class="tvt--center tvt--score"
+                <v-flex class="tvt--center tvt--score" 
                     >{{ fixture.goalsHomeTeam }} -
                     {{ fixture.goalsAwayTeam }}</v-flex
                 >
             </v-layout>
-            <v-flex class="tvt--center tvt--logo" xs4 v-if="live">
+            <v-flex class="tvt--center tvt--logo" xs4>
                 <router-link
                     v-if="hrefTeams"
                     :to="{ name: 'team', params: { id: fixture.awayTeam_id } }"
                     ><TeamLogo :team-id="fixture.awayTeam_id"
                 /></router-link>
-                <TeamLogo v-else :team-id="fixture.awayTeam_id" />
+                <TeamLogo :team-id="fixture.awayTeam_id" />
             </v-flex>
         </v-layout>
-        <v-layout v-if="hrefStatistic" class="tvt--statistic">
+        <v-layout v-if="isInLiveTable() && hrefStatistic" class="tvt--statistic">
             <router-link
                 :to="{ name: 'fixture', params: { id: fixture.fixture_id } }"
                 class="tvt--statistic__link"
@@ -88,7 +89,11 @@ export default {
         resolve: false,
     }),
     created() {},
-    methods: {},
+    methods: {
+        isInLiveTable() {
+            return this.live || this.fixture.final_score || this.fixture.elapsed > 0
+        }
+    },
 };
 </script>
 <style lang="scss">
