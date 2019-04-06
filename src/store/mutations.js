@@ -5,6 +5,12 @@ export default {
 	STORE_FIXTURE: (state, { fixtureId, fixture }) => {
 		state.fixtures[fixtureId] = fixture;
 	},
+	STORE_LIVE_FIXTURES: (state, { fixtures }) => {
+		state.liveFixtures = { ...state.liveFixtures, ...fixtures };
+	},
+	STORE_TODAY_FIXTURES: (state, { fixtures }) => {
+		state.todayFixtures = { ...state.todayFixtures, ...fixtures };
+	},
 	STORE_LINEUP: (state, { fixtureId, lineups }) => {
 		state.lineups[fixtureId] = lineups;
 	},

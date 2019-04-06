@@ -3,11 +3,22 @@
         <h1>Live</h1>
         <v-layout row wrap>
             <TeamVsTeam
-                v-for="fixture of orderedFixtures"
+                v-for="fixture of orderedLiveFixtures"
                 :key="fixture.fixture_id"
                 :fixture="fixture"
                 :href-statistic="true"
-                :is-live="true"
+                :live="isItLive(fixture.elapsed)"
+                :hrefTeams="false"
+            />
+        </v-layout>
+        <h1>Today next</h1>
+        <v-layout row wrap>
+            <TeamVsTeam
+                v-for="fixture of notStartedFixtures"
+                :key="fixture.fixture_id"
+                :fixture="fixture"
+                :href-statistic="true"
+                :live="isItLive(fixture.elapsed)"
                 :hrefTeams="false"
             />
         </v-layout>
@@ -19,6 +30,7 @@
 import api from '@/services/';
 import { TeamLogo, TeamVsTeam } from '@/components/blocks';
 import sortBy from 'lodash/sortBy';
+import filter from 'lodash/filter';
 
 export default {
     components: {
@@ -26,11 +38,16 @@ export default {
         TeamVsTeam,
     },
     data: () => ({
-        fixtures: {},
+        liveFixtures: {},
+        todayFixtures: {}
     }),
     computed: {
-        orderedFixtures() {
-            return sortBy(this.fixtures, 'elapsed');
+        orderedLiveFixtures() {
+            return sortBy({...this.liveFixtures }, 'elapsed');
+        },
+        notStartedFixtures() {
+            const sorted = sortBy({...this.todayFixtures }, 'event_date');
+            return filter(sorted, (fixture) => !(fixture.elapsed > 0));
         },
     },
     beforeRouteLeave(to, from, next) {
@@ -42,12 +59,24 @@ export default {
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
-            api.getApi('fixtures/live').then(res => {
-                vm.fixtures = res.body.api.fixtures;
+            api.getLiveFixtures().then(res => {
+                vm.liveFixtures = vm.$store.state.liveFixtures;
             });
         });
     },
-    methods: {},
+    mounted(){
+        api.getTodayFixtures().then(res => {
+                this.todayFixtures = this.$store.state.todayFixtures;
+            });
+    },
+    methods: {
+        isItLive(elapsed) {
+            if (elapsed >= 1){
+                return true;
+            }
+            return false;
+        },
+    }
 };
 </script>
 <style></style>

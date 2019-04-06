@@ -8,6 +8,12 @@ export default {
 	STORE_FIXTURE: (context, payload) => {
 		context.commit('STORE_FIXTURE', payload);
 	},
+	STORE_LIVE_FIXTURES: (context, payload) => {
+		context.commit('STORE_LIVE_FIXTURES', payload);
+	},
+	STORE_TODAY_FIXTURES: (context, payload) => {
+		context.commit('STORE_TODAY_FIXTURES', payload);
+	},
 	STORE_LINEUP: (context, payload) => {
 		context.commit('STORE_LINEUP', payload);
 	},

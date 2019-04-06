@@ -14,6 +14,8 @@ const store = new Vuex.Store({
 		leagues: {},
 		leaguesCount: 0,
 		fixtures: {},
+		liveFixtures: {},
+		todayFixtures: {},
 		lineups: {},
 		events: {},
 		statistics: {},

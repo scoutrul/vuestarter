@@ -13,6 +13,19 @@ export default {
 			.header('X-RapidAPI-Key', token)
 			.then(res => res);
 	},
+	getLiveFixtures() {
+		return this.getApi('fixtures/live').then(res => {
+			const { fixtures } = res.body.api;
+			store.commit('STORE_LIVE_FIXTURES', { fixtures });
+		});
+	},
+	getTodayFixtures() {
+		const date = '2019-04-07';
+		return this.getApi(`fixtures/date/${date}`).then(res => {
+			const { fixtures } = res.body.api;
+			store.commit('STORE_TODAY_FIXTURES', { fixtures });
+		});;
+	},
 	apiService(entityId, path) {
 		if (!entityId) {
 			return new Promise((resolve, reject) => resolve());

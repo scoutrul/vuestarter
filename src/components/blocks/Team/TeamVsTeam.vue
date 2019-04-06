@@ -10,13 +10,13 @@
         v-if="fixture"
     >
         <v-layout justify-center align-center>
-            <v-flex class="tvt--nogrow">
+            <v-flex class="tvt--nogrow"  v-if="live">
                 <CountryFlag :league_id="fixture.league_id" />
             </v-flex>
             <v-flex class="tvt--center tvt--title tvt--round tvt--nogrow">{{
                 fixture.round
             }}</v-flex>
-            <v-flex v-if="isLive" class="tvt--live tvt--nogrow">Live!</v-flex>
+            <v-flex v-if="live" class="tvt--live tvt--nogrow">Live!</v-flex>
         </v-layout>
 
         <v-layout class="tvt--header">
@@ -41,7 +41,7 @@
             </v-flex>
         </v-layout>
         <v-layout class="tvt--header">
-            <v-flex class="tvt--center tvt--logo" xs4>
+            <v-flex class="tvt--center tvt--logo" xs4 v-if="live">
                 <router-link
                     v-if="hrefTeams"
                     :to="{ name: 'team', params: { id: fixture.homeTeam_id } }"
@@ -55,7 +55,7 @@
                     {{ fixture.goalsAwayTeam }}</v-flex
                 >
             </v-layout>
-            <v-flex class="tvt--center tvt--logo" xs4>
+            <v-flex class="tvt--center tvt--logo" xs4 v-if="live">
                 <router-link
                     v-if="hrefTeams"
                     :to="{ name: 'team', params: { id: fixture.awayTeam_id } }"
@@ -83,7 +83,7 @@ export default {
         TeamLogo,
         CountryFlag,
     },
-    props: ['fixture', 'hrefStatistic', 'isLive', 'hrefTeams'],
+    props: ['fixture', 'hrefStatistic', 'live', 'hrefTeams'],
     data: () => ({
         resolve: false,
     }),

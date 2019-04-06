@@ -1,21 +1,17 @@
 <template>
-    <img
-        v-if="resolved"
-        :class="`logo ${className && className}`"
-        :src="team.logo || defaultLogo"
-        :alt="team.name"
-        :title="team.name"
-        :style="{ height: `${size && size}px` }"
-    />
-    <img
-        v-else
-        class="logo"
-        :src="defaultLogo"
-        alt=""
-        title=""
-        :class="`logo ${className && className}`"
-        :style="{ height: `${size && size}px` }"
-    />
+    <v-flex :style="{ minHeight: size ? `${size}px` : '60px' }">
+        <v-img
+            v-if="resolved"
+            :max-height="size ? size : 60"
+            contain
+            :class="`${className && className}`"
+            :src="team.logo"
+            :lazy-src="defaultLogo"
+            :alt="team.name"
+            :title="team.name"
+            :height="size ? size : 60"
+        />
+    </v-flex>
 </template>
 
 <script>
@@ -25,7 +21,7 @@ export default {
     props: ['teamId', 'size', 'className'],
     data: () => ({
         defaultLogo: 'http://clipart-library.com/image_gallery/348752.gif',
-        team: null,
+        team: {},
         resolved: false,
     }),
     mounted() {
@@ -46,7 +42,5 @@ export default {
 };
 </script>
 <style>
-.logo {
-    object-fit: contain;
-}
+
 </style>
